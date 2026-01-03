@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Spanish Exercise — Present / Pretérito Perfecto / Indefinido</title>
+<title>Spanish Exercise — 3 Tenses + Full Conjugations</title>
 
 <style>
   :root{
@@ -18,6 +18,7 @@
   }
   h1{ margin:0 0 8px; font-size: 24px; line-height: 1.2; }
   h2{ margin:0 0 10px; font-size: 20px; line-height: 1.2; }
+  h3{ margin: 14px 0 8px; font-size: 16px; }
   .sub{ color:#444; font-size: 15px; line-height: 1.35; }
   .note{ color:#555; font-size: 14px; line-height: 1.45; margin-top: 8px; }
   .hint{ font-size: 13px; color:#666; }
@@ -54,15 +55,19 @@
   }
 
   /* Items */
-  .item{
+  .block{
     border: 1px solid #eee;
     background:#fcfcfc;
     border-radius: 14px;
     padding: 14px;
     margin-top: 12px;
   }
-  .sp{ font-size: 20px; font-weight: 900; line-height: 1.35; }
-  .en{ font-size: 15px; color:#444; line-height: 1.35; margin-top: 6px; }
+  .verbTitle{
+    display:flex; gap:10px; flex-wrap:wrap; align-items: baseline;
+    margin-bottom: 4px;
+  }
+  .verb{ font-size: 20px; font-weight: 900; }
+  .meaning{ font-size: 15px; color:#444; font-weight: 600; }
   .tag{
     display:inline-block;
     font-size: 12px;
@@ -73,20 +78,41 @@
     color:#555;
     margin-top: 10px;
   }
-  .tools{ display:flex; flex-direction: column; gap:10px; margin-top: 12px; }
 
-  .grid{
-    display:grid;
-    gap: 12px;
-    grid-template-columns: 1fr;
-    margin-top: 12px;
+  .tense{
+    margin-top: 10px;
+    border:1px dashed #e1e1e1;
+    background:#fff;
+    border-radius: 12px;
+    padding: 12px;
   }
+  .tenseHeader{
+    display:flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+    align-items: baseline;
+    margin-bottom: 10px;
+  }
+  .tenseName{ font-weight: 900; }
+  .tenseHint{ color:#555; font-size: 13px; }
+
+  .lines{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .line{
+    border:1px solid #eee;
+    border-radius: 12px;
+    padding: 10px 12px;
+    background:#fcfcfc;
+  }
+  .sp{ font-size: 18px; font-weight: 900; line-height: 1.25; }
+  .en{ font-size: 14px; color:#444; line-height: 1.35; margin-top: 6px; }
+  .tools{ display:flex; flex-direction: column; gap:10px; margin-top: 10px; }
 
   @media (min-width: 860px){
     .wrap{ padding: 18px; }
     h1{ font-size: 28px; }
     h2{ font-size: 22px; }
-    .sp{ font-size: 22px; }
 
     .controls{
       display:grid;
@@ -94,11 +120,12 @@
       gap: 12px;
       align-items: end;
     }
-    .tools{ flex-direction: row; align-items: center; flex-wrap: wrap; }
     .btn{ width:auto; }
     .btn.secondary{ width:auto; }
 
-    .grid{ grid-template-columns: 1fr 1fr; }
+    .lines{
+      grid-template-columns: 1fr 1fr;
+    }
   }
 </style>
 </head>
@@ -106,11 +133,11 @@
 <body>
 <div class="wrap">
 
-  <!-- Header / Controls -->
   <div class="card">
-    <h1>Spanish Exercise — 3 Tenses (with examples)</h1>
+    <h1>Spanish Exercise — Present / Perfect / Indefinido</h1>
     <div class="sub">
-      Tap <b>▶ Speak</b> to hear the Spanish sentence. Auto-selects <b>Google Español de Estados Unidos</b> when available.
+      Full set for each tense: <b>Yo, Tú, Él/Ella/Ud., Nosotros, Vosotros, Ellos/Ellas/Uds.</b><br>
+      Tap <b>▶ Speak</b> to hear each Spanish sentence. Auto-selects <b>Google Español de Estados Unidos</b> when available.
     </div>
 
     <div class="controls">
@@ -132,128 +159,16 @@
     </div>
 
     <div class="note">
-      <b>Pretérito Perfecto</b> = “I have …” (recent / “today, this week”).<br>
-      <b>Pretérito Indefinido</b> = “I …” (finished past time: “yesterday, last year”).
+      <b>Pretérito Perfecto</b> = “I have …” (often “today / this week”).<br>
+      <b>Pretérito Indefinido</b> = finished past time (“yesterday / last year”).
     </div>
   </div>
 
-  <!-- COMER -->
-  <div class="card">
-    <h2>Comer — <span style="font-weight:600;color:#444;">to eat</span></h2>
-
-    <div class="grid">
-      <div class="item" data-spanish="Yo como pan todos los días.">
-        <div class="sp">Yo como pan todos los días.</div>
-        <div class="en"><b>English:</b> I eat bread every day.</div>
-        <span class="tag">Presente</span>
-        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
-      </div>
-
-      <div class="item" data-spanish="Hoy he comido una ensalada.">
-        <div class="sp">Hoy he comido una ensalada.</div>
-        <div class="en"><b>English:</b> Today I have eaten a salad.</div>
-        <span class="tag">Pretérito Perfecto</span>
-        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
-      </div>
-
-      <div class="item" data-spanish="Ayer comí pizza.">
-        <div class="sp">Ayer comí pizza.</div>
-        <div class="en"><b>English:</b> Yesterday I ate pizza.</div>
-        <span class="tag">Pretérito Indefinido</span>
-        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- VIVIR -->
-  <div class="card">
-    <h2>Vivir — <span style="font-weight:600;color:#444;">to live</span></h2>
-
-    <div class="grid">
-      <div class="item" data-spanish="Yo vivo en Los Ángeles.">
-        <div class="sp">Yo vivo en Los Ángeles.</div>
-        <div class="en"><b>English:</b> I live in Los Angeles.</div>
-        <span class="tag">Presente</span>
-        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
-      </div>
-
-      <div class="item" data-spanish="Este mes he vivido muy ocupado.">
-        <div class="sp">Este mes he vivido muy ocupado.</div>
-        <div class="en"><b>English:</b> This month I have lived very busy.</div>
-        <div class="en"><i>More natural:</i> “Este mes <b>he estado</b> muy ocupado.” = I’ve been very busy this month.</div>
-        <span class="tag">Pretérito Perfecto</span>
-        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
-      </div>
-
-      <div class="item" data-spanish="El año pasado viví en otra ciudad.">
-        <div class="sp">El año pasado viví en otra ciudad.</div>
-        <div class="en"><b>English:</b> Last year I lived in another city.</div>
-        <span class="tag">Pretérito Indefinido</span>
-        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- HACER -->
-  <div class="card">
-    <h2>Hacer — <span style="font-weight:600;color:#444;">to do / to make</span></h2>
-
-    <div class="grid">
-      <div class="item" data-spanish="Yo hago ejercicio por la mañana.">
-        <div class="sp">Yo hago ejercicio por la mañana.</div>
-        <div class="en"><b>English:</b> I exercise in the morning.</div>
-        <span class="tag">Presente</span>
-        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
-      </div>
-
-      <div class="item" data-spanish="Hoy he hecho la cena.">
-        <div class="sp">Hoy he hecho la cena.</div>
-        <div class="en"><b>English:</b> Today I have made dinner.</div>
-        <span class="tag">Pretérito Perfecto</span>
-        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
-      </div>
-
-      <div class="item" data-spanish="Anoche hice una llamada importante.">
-        <div class="sp">Anoche hice una llamada importante.</div>
-        <div class="en"><b>English:</b> Last night I made an important call.</div>
-        <span class="tag">Pretérito Indefinido</span>
-        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- TENER -->
-  <div class="card">
-    <h2>Tener — <span style="font-weight:600;color:#444;">to have</span></h2>
-
-    <div class="grid">
-      <div class="item" data-spanish="Yo tengo dos hijos.">
-        <div class="sp">Yo tengo dos hijos.</div>
-        <div class="en"><b>English:</b> I have two kids.</div>
-        <span class="tag">Presente</span>
-        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
-      </div>
-
-      <div class="item" data-spanish="Esta semana he tenido mucho trabajo.">
-        <div class="sp">Esta semana he tenido mucho trabajo.</div>
-        <div class="en"><b>English:</b> This week I have had a lot of work.</div>
-        <span class="tag">Pretérito Perfecto</span>
-        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
-      </div>
-
-      <div class="item" data-spanish="Ayer tuve una reunión.">
-        <div class="sp">Ayer tuve una reunión.</div>
-        <div class="en"><b>English:</b> Yesterday I had a meeting.</div>
-        <span class="tag">Pretérito Indefinido</span>
-        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
-      </div>
-    </div>
-  </div>
-
+  <div id="content"></div>
 </div>
 
 <script>
-  // Auto-select voice preference: "Google Español de Estados Unidos" (if available)
+  // ---------- Voice / TTS ----------
   const PREFERRED_VOICE_PARTS = ["google", "español", "estados unidos"];
 
   const voiceSelect = document.getElementById("voiceSelect");
@@ -300,8 +215,8 @@
 
   function speak(text) {
     if (!window.speechSynthesis) return;
-
     window.speechSynthesis.cancel();
+
     const u = new SpeechSynthesisUtterance(text);
     u.rate = parseFloat(rate.value);
 
@@ -316,10 +231,7 @@
     window.speechSynthesis.speak(u);
   }
 
-  rate.addEventListener("input", () => {
-    rateVal.textContent = `${rate.value}×`;
-  });
-
+  rate.addEventListener("input", () => rateVal.textContent = `${rate.value}×`);
   stopBtn.addEventListener("click", () => window.speechSynthesis?.cancel?.());
 
   if (window.speechSynthesis) {
@@ -327,10 +239,236 @@
     window.speechSynthesis.onvoiceschanged = loadVoicesAndAutoSelect;
   }
 
-  // Hook up Speak buttons
-  document.querySelectorAll("[data-spanish]").forEach(node => {
-    const btn = node.querySelector(".speak");
-    if (btn) btn.addEventListener("click", () => speak(node.dataset.spanish));
+  // ---------- Data ----------
+  // Each tense has 6 persons. Each line includes a Spanish sentence + English translation.
+  const verbs = [
+    {
+      verb: "Comer",
+      meaning: "to eat",
+      tenses: [
+        {
+          name: "Presente",
+          hint: "habit / general present",
+          lines: [
+            { sp:"Yo como pan todos los días.", en:"I eat bread every day." },
+            { sp:"Tú comes pan todos los días.", en:"You eat bread every day." },
+            { sp:"Ella come pan todos los días.", en:"She eats bread every day." },
+            { sp:"Nosotros comemos pan todos los días.", en:"We eat bread every day." },
+            { sp:"Vosotros coméis pan todos los días.", en:"You all eat bread every day. (Spain)" },
+            { sp:"Ellos comen pan todos los días.", en:"They eat bread every day." }
+          ]
+        },
+        {
+          name: "Pretérito Perfecto",
+          hint: "recent / today / this week",
+          lines: [
+            { sp:"Hoy he comido una ensalada.", en:"Today I have eaten a salad." },
+            { sp:"Hoy has comido una ensalada.", en:"Today you have eaten a salad." },
+            { sp:"Hoy ella ha comido una ensalada.", en:"Today she has eaten a salad." },
+            { sp:"Hoy hemos comido una ensalada.", en:"Today we have eaten a salad." },
+            { sp:"Hoy habéis comido una ensalada.", en:"Today you all have eaten a salad. (Spain)" },
+            { sp:"Hoy han comido una ensalada.", en:"Today they have eaten a salad." }
+          ]
+        },
+        {
+          name: "Pretérito Indefinido",
+          hint: "finished past time (ayer, anoche...)",
+          lines: [
+            { sp:"Ayer comí pizza.", en:"Yesterday I ate pizza." },
+            { sp:"Ayer comiste pizza.", en:"Yesterday you ate pizza." },
+            { sp:"Ayer ella comió pizza.", en:"Yesterday she ate pizza." },
+            { sp:"Ayer comimos pizza.", en:"Yesterday we ate pizza." },
+            { sp:"Ayer comisteis pizza.", en:"Yesterday you all ate pizza. (Spain)" },
+            { sp:"Ayer comieron pizza.", en:"Yesterday they ate pizza." }
+          ]
+        }
+      ]
+    },
+
+    {
+      verb: "Vivir",
+      meaning: "to live",
+      tenses: [
+        {
+          name: "Presente",
+          hint: "current/general",
+          lines: [
+            { sp:"Yo vivo en Los Ángeles.", en:"I live in Los Angeles." },
+            { sp:"Tú vives en Los Ángeles.", en:"You live in Los Angeles." },
+            { sp:"Ella vive en Los Ángeles.", en:"She lives in Los Angeles." },
+            { sp:"Nosotros vivimos en Los Ángeles.", en:"We live in Los Angeles." },
+            { sp:"Vosotros vivís en Los Ángeles.", en:"You all live in Los Angeles. (Spain)" },
+            { sp:"Ellos viven en Los Ángeles.", en:"They live in Los Angeles." }
+          ]
+        },
+        {
+          name: "Pretérito Perfecto",
+          hint: "recent period (este mes...)",
+          lines: [
+            { sp:"Este mes he vivido en una casa nueva.", en:"This month I have lived in a new house." },
+            { sp:"Este mes has vivido en una casa nueva.", en:"This month you have lived in a new house." },
+            { sp:"Este mes ella ha vivido en una casa nueva.", en:"This month she has lived in a new house." },
+            { sp:"Este mes hemos vivido en una casa nueva.", en:"This month we have lived in a new house." },
+            { sp:"Este mes habéis vivido en una casa nueva.", en:"This month you all have lived in a new house. (Spain)" },
+            { sp:"Este mes han vivido en una casa nueva.", en:"This month they have lived in a new house." }
+          ]
+        },
+        {
+          name: "Pretérito Indefinido",
+          hint: "completed time (el año pasado...)",
+          lines: [
+            { sp:"El año pasado viví en otra ciudad.", en:"Last year I lived in another city." },
+            { sp:"El año pasado viviste en otra ciudad.", en:"Last year you lived in another city." },
+            { sp:"El año pasado ella vivió en otra ciudad.", en:"Last year she lived in another city." },
+            { sp:"El año pasado vivimos en otra ciudad.", en:"Last year we lived in another city." },
+            { sp:"El año pasado vivisteis en otra ciudad.", en:"Last year you all lived in another city. (Spain)" },
+            { sp:"El año pasado vivieron en otra ciudad.", en:"Last year they lived in another city." }
+          ]
+        }
+      ]
+    },
+
+    {
+      verb: "Hacer",
+      meaning: "to do / to make",
+      tenses: [
+        {
+          name: "Presente",
+          hint: "habit / routine",
+          lines: [
+            { sp:"Yo hago ejercicio por la mañana.", en:"I exercise in the morning." },
+            { sp:"Tú haces ejercicio por la mañana.", en:"You exercise in the morning." },
+            { sp:"Ella hace ejercicio por la mañana.", en:"She exercises in the morning." },
+            { sp:"Nosotros hacemos ejercicio por la mañana.", en:"We exercise in the morning." },
+            { sp:"Vosotros hacéis ejercicio por la mañana.", en:"You all exercise in the morning. (Spain)" },
+            { sp:"Ellos hacen ejercicio por la mañana.", en:"They exercise in the morning." }
+          ]
+        },
+        {
+          name: "Pretérito Perfecto",
+          hint: "today / recent",
+          lines: [
+            { sp:"Hoy he hecho la cena.", en:"Today I have made dinner." },
+            { sp:"Hoy has hecho la cena.", en:"Today you have made dinner." },
+            { sp:"Hoy ella ha hecho la cena.", en:"Today she has made dinner." },
+            { sp:"Hoy hemos hecho la cena.", en:"Today we have made dinner." },
+            { sp:"Hoy habéis hecho la cena.", en:"Today you all have made dinner. (Spain)" },
+            { sp:"Hoy han hecho la cena.", en:"Today they have made dinner." }
+          ]
+        },
+        {
+          name: "Pretérito Indefinido",
+          hint: "finished past time (anoche...)",
+          lines: [
+            { sp:"Anoche hice una llamada importante.", en:"Last night I made an important call." },
+            { sp:"Anoche hiciste una llamada importante.", en:"Last night you made an important call." },
+            { sp:"Anoche ella hizo una llamada importante.", en:"Last night she made an important call." },
+            { sp:"Anoche hicimos una llamada importante.", en:"Last night we made an important call." },
+            { sp:"Anoche hicisteis una llamada importante.", en:"Last night you all made an important call. (Spain)" },
+            { sp:"Anoche hicieron una llamada importante.", en:"Last night they made an important call." }
+          ]
+        }
+      ]
+    },
+
+    {
+      verb: "Tener",
+      meaning: "to have",
+      tenses: [
+        {
+          name: "Presente",
+          hint: "current / general",
+          lines: [
+            { sp:"Yo tengo dos hijos.", en:"I have two kids." },
+            { sp:"Tú tienes dos hijos.", en:"You have two kids." },
+            { sp:"Ella tiene dos hijos.", en:"She has two kids." },
+            { sp:"Nosotros tenemos dos hijos.", en:"We have two kids." },
+            { sp:"Vosotros tenéis dos hijos.", en:"You all have two kids. (Spain)" },
+            { sp:"Ellos tienen dos hijos.", en:"They have two kids." }
+          ]
+        },
+        {
+          name: "Pretérito Perfecto",
+          hint: "this week / recent",
+          lines: [
+            { sp:"Esta semana he tenido mucho trabajo.", en:"This week I have had a lot of work." },
+            { sp:"Esta semana has tenido mucho trabajo.", en:"This week you have had a lot of work." },
+            { sp:"Esta semana ella ha tenido mucho trabajo.", en:"This week she has had a lot of work." },
+            { sp:"Esta semana hemos tenido mucho trabajo.", en:"This week we have had a lot of work." },
+            { sp:"Esta semana habéis tenido mucho trabajo.", en:"This week you all have had a lot of work. (Spain)" },
+            { sp:"Esta semana han tenido mucho trabajo.", en:"This week they have had a lot of work." }
+          ]
+        },
+        {
+          name: "Pretérito Indefinido",
+          hint: "finished past time (ayer...)",
+          lines: [
+            { sp:"Ayer tuve una reunión.", en:"Yesterday I had a meeting." },
+            { sp:"Ayer tuviste una reunión.", en:"Yesterday you had a meeting." },
+            { sp:"Ayer ella tuvo una reunión.", en:"Yesterday she had a meeting." },
+            { sp:"Ayer tuvimos una reunión.", en:"Yesterday we had a meeting." },
+            { sp:"Ayer tuvisteis una reunión.", en:"Yesterday you all had a meeting. (Spain)" },
+            { sp:"Ayer tuvieron una reunión.", en:"Yesterday they had a meeting." }
+          ]
+        }
+      ]
+    }
+  ];
+
+  // ---------- Render ----------
+  const content = document.getElementById("content");
+
+  function el(tag, cls, text){
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+
+  function makeSpeakButton(spanishText){
+    const b = el("button","btn speak","▶ Speak");
+    b.type = "button";
+    b.addEventListener("click", () => speak(spanishText));
+    return b;
+  }
+
+  verbs.forEach(v => {
+    const card = el("div","card");
+    const title = el("h2","");
+    title.innerHTML = `${v.verb} — <span style="font-weight:600;color:#444;">${v.meaning}</span>`;
+    card.appendChild(title);
+
+    v.tenses.forEach(t => {
+      const tense = el("div","tense");
+
+      const head = el("div","tenseHeader");
+      head.appendChild(el("div","tenseName", t.name));
+      head.appendChild(el("div","tenseHint", t.hint));
+      tense.appendChild(head);
+
+      const lines = el("div","lines");
+
+      t.lines.forEach(line => {
+        const box = el("div","line");
+        box.dataset.spanish = line.sp;
+
+        box.appendChild(el("div","sp", line.sp));
+        const en = el("div","en");
+        en.innerHTML = `<b>English:</b> ${line.en}`;
+        box.appendChild(en);
+
+        const tools = el("div","tools");
+        tools.appendChild(makeSpeakButton(line.sp));
+        box.appendChild(tools);
+
+        lines.appendChild(box);
+      });
+
+      tense.appendChild(lines);
+      card.appendChild(tense);
+    });
+
+    content.appendChild(card);
   });
 </script>
 </body>
