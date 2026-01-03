@@ -1,594 +1,294 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Spanish Class — Future Tenses + Vocabulary (Voice)</title>
-  <style>
-    :root { font-family: Arial, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
-    body { margin: 0; background: #fafafa; color: #111; }
-    .wrap { max-width: 980px; margin: 0 auto; padding: 18px; }
-    header { display: grid; gap: 10px; padding: 14px 0 6px; }
-    h1 { margin: 0; font-size: 20px; }
-    .sub { color: #444; font-size: 14px; line-height: 1.35; }
-    .card { background: #fff; border: 1px solid #e6e6e6; border-radius: 14px; padding: 14px; margin: 12px 0; box-shadow: 0 1px 0 rgba(0,0,0,0.03); }
-    .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-    label { font-size: 13px; color: #333; }
-    select, input[type="range"] { accent-color: #111; }
-    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid #e6e6e6; border-radius: 999px; background: #fff; }
-    .btn { cursor: pointer; border: 1px solid #ddd; background: #111; color: #fff; padding: 9px 12px; border-radius: 10px; font-weight: 600; }
-    .btn.secondary { background: #fff; color: #111; }
-    .btn.small { padding: 6px 10px; border-radius: 9px; font-size: 13px; }
-    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-    h2 { margin: 0 0 10px; font-size: 16px; }
-    ul { margin: 8px 0 0 18px; }
-    .item { display: grid; gap: 8px; padding: 12px; border: 1px solid #eee; border-radius: 12px; margin: 10px 0; background: #fcfcfc; }
-    .sp { font-size: 16px; font-weight: 700; }
-    .en { font-size: 13px; color: #444; }
-    .tools { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-    .note { font-size: 12px; color: #555; line-height: 1.35; }
-    .status { font-size: 12px; color: #444; padding: 7px 10px; border: 1px dashed #ddd; border-radius: 10px; background: #fff; }
-    .good { color: #0a7a2a; }
-    .bad { color: #b00020; }
-    .muted { color: #666; }
-    code { background: #f2f2f2; padding: 2px 6px; border-radius: 6px; }
-    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish Class – Future Tenses</title>
 
-    table { width: 100%; border-collapse: collapse; background:#fff; border:1px solid #eee; border-radius:12px; overflow:hidden; }
-    th, td { text-align: left; padding: 10px; border-bottom: 1px solid #eee; vertical-align: top; }
-    th { background: #f7f7f7; font-size: 13px; }
-    td { font-size: 13px; color: #222; }
-    tr:last-child td { border-bottom: none; }
-    .ttools { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
-    .nowrap { white-space: nowrap; }
-  </style>
+<style>
+/* ---------- Base ---------- */
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Helvetica, Arial, sans-serif;
+}
+body {
+  margin: 0;
+  background: #fafafa;
+  color: #111;
+}
+.wrap {
+  max-width: 900px;
+  margin: auto;
+  padding: 16px;
+}
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+h1 {
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+h2 {
+  font-size: 22px;
+  margin-top: 0;
+}
+.sub {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 12px;
+}
+.note {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* ---------- Controls ---------- */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+label {
+  font-size: 14px;
+  font-weight: 600;
+}
+select, input[type="range"] {
+  font-size: 16px;
+  padding: 10px;
+}
+button {
+  font-size: 16px;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+}
+.btn {
+  background: #111;
+  color: #fff;
+}
+.btn.secondary {
+  background: #fff;
+  color: #111;
+  border: 1px solid #ddd;
+}
+.status {
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px dashed #ddd;
+}
+
+/* ---------- Content blocks ---------- */
+.item {
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 14px;
+  margin-top: 12px;
+}
+.sp {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.en {
+  font-size: 15px;
+  color: #444;
+}
+.tools {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* ---------- Vocabulary cards ---------- */
+.vocab {
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 14px;
+  margin-top: 12px;
+}
+.vocab b {
+  font-size: 20px;
+}
+
+/* ---------- Desktop enhancements ---------- */
+@media (min-width: 900px) {
+  .tools {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+</style>
 </head>
+
 <body>
-  <div class="wrap">
-    <header>
-      <h1>Spanish Class — Vocabulary + Future Tenses (with Voice)</h1>
-      <div class="sub">
-        This page auto-selects your favorite voice if available: <b>Google Español de Estados Unidos</b>.
-        Click <b>▶ Speak</b> to hear Spanish. Use <b>🎙 Repeat</b> to practice speaking (Chrome desktop works best).
-      </div>
+<div class="wrap">
 
-      <div class="card">
-        <div class="row">
-          <div class="pill">
-            <label for="voiceSelect"><b>Voice</b></label>
-            <select id="voiceSelect"></select>
-          </div>
-
-          <div class="pill">
-            <label for="rate"><b>Speed</b></label>
-            <input id="rate" type="range" min="0.6" max="1.2" step="0.05" value="0.95" />
-            <span id="rateVal" class="muted">0.95×</span>
-          </div>
-
-          <button class="btn secondary" id="stopBtn" type="button">■ Stop</button>
-          <span class="note" id="voiceHint"></span>
-        </div>
-      </div>
-    </header>
-
-    <!-- 1. Vocabulary & Clarifications -->
-    <section class="card">
-      <h2>1) Vocabulary & Clarifications</h2>
-      <div class="note">During the lesson, you clarified several cultural and linguistic terms:</div>
-
-      <div style="margin-top:10px; overflow:auto;">
-        <table>
-          <thead>
-            <tr>
-              <th class="nowrap">Spanish Word</th>
-              <th>English Meaning</th>
-              <th>Teacher's Context / Explanation</th>
-              <th class="nowrap">Practice</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr data-spanish="Roscón de Reyes." data-english="King's Cake">
-              <td><b>Roscón de Reyes</b></td>
-              <td>King's Cake</td>
-              <td>A round sweet bread eaten for Epiphany.</td>
-              <td>
-                <div class="ttools">
-                  <button class="btn small speak" type="button">▶ Speak</button>
-                  <button class="btn small secondary mic" type="button">🎙 Repeat</button>
-                  <span class="status muted">Ready</span>
-                </div>
-              </td>
-            </tr>
-            <tr data-spanish="Nata." data-english="Cream">
-              <td><b>Nata</b></td>
-              <td>Cream</td>
-              <td>Usually refers to whipped cream filling in a cake.</td>
-              <td>
-                <div class="ttools">
-                  <button class="btn small speak" type="button">▶ Speak</button>
-                  <button class="btn small secondary mic" type="button">🎙 Repeat</button>
-                  <span class="status muted">Ready</span>
-                </div>
-              </td>
-            </tr>
-            <tr data-spanish="Pantalla." data-english="Screen">
-              <td><b>Pantalla</b></td>
-              <td>Screen</td>
-              <td>Refers to a computer or device screen.</td>
-              <td>
-                <div class="ttools">
-                  <button class="btn small speak" type="button">▶ Speak</button>
-                  <button class="btn small secondary mic" type="button">🎙 Repeat</button>
-                  <span class="status muted">Ready</span>
-                </div>
-              </td>
-            </tr>
-            <tr data-spanish="Caber." data-english="To fit">
-              <td><b>Caber</b></td>
-              <td>To fit</td>
-              <td>Used to describe capacity (e.g., “In my car five people fit”).</td>
-              <td>
-                <div class="ttools">
-                  <button class="btn small speak" type="button">▶ Speak</button>
-                  <button class="btn small secondary mic" type="button">🎙 Repeat</button>
-                  <span class="status muted">Ready</span>
-                </div>
-              </td>
-            </tr>
-            <tr data-spanish="Valer." data-english="To cost / To be worth">
-              <td><b>Valer</b></td>
-              <td>To cost / To be worth</td>
-              <td>Used to express value or price of items or people.</td>
-              <td>
-                <div class="ttools">
-                  <button class="btn small speak" type="button">▶ Speak</button>
-                  <button class="btn small secondary mic" type="button">🎙 Repeat</button>
-                  <span class="status muted">Ready</span>
-                </div>
-              </td>
-            </tr>
-            <tr data-spanish="Siguiente. Al día siguiente." data-english="Next / Following">
-              <td><b>Siguiente</b></td>
-              <td>Next / Following</td>
-              <td>“Al día siguiente” means “the next day”.</td>
-              <td>
-                <div class="ttools">
-                  <button class="btn small speak" type="button">▶ Speak</button>
-                  <button class="btn small secondary mic" type="button">🎙 Repeat</button>
-                  <span class="status muted">Ready</span>
-                </div>
-              </td>
-            </tr>
-            <tr data-spanish="Sendero." data-english="Path / Trail">
-              <td><b>Sendero</b></td>
-              <td>Path / Trail</td>
-              <td>A path through the forest (bosque).</td>
-              <td>
-                <div class="ttools">
-                  <button class="btn small speak" type="button">▶ Speak</button>
-                  <button class="btn small secondary mic" type="button">🎙 Repeat</button>
-                  <span class="status muted">Ready</span>
-                </div>
-              </td>
-            </tr>
-            <tr data-spanish="Charlar." data-english="To chat">
-              <td><b>Charlar</b></td>
-              <td>To chat</td>
-              <td>An informal way to say “to talk” about life.</td>
-              <td>
-                <div class="ttools">
-                  <button class="btn small speak" type="button">▶ Speak</button>
-                  <button class="btn small secondary mic" type="button">🎙 Repeat</button>
-                  <span class="status muted">Ready</span>
-                </div>
-              </td>
-            </tr>
-            <tr data-spanish="Alojamiento." data-english="Accommodation">
-              <td><b>Alojamiento</b></td>
-              <td>Accommodation</td>
-              <td>General term for a place to stay (hotel, etc.).</td>
-              <td>
-                <div class="ttools">
-                  <button class="btn small speak" type="button">▶ Speak</button>
-                  <button class="btn small secondary mic" type="button">🎙 Repeat</button>
-                  <span class="status muted">Ready</span>
-                </div>
-              </td>
-            </tr>
-            <tr data-spanish="Sin duda." data-english="Without a doubt">
-              <td><b>Sin duda</b></td>
-              <td>Without a doubt</td>
-              <td>Used to say “certainly” or “obviously.”</td>
-              <td>
-                <div class="ttools">
-                  <button class="btn small speak" type="button">▶ Speak</button>
-                  <button class="btn small secondary mic" type="button">🎙 Repeat</button>
-                  <span class="status muted">Ready</span>
-                </div>
-              </td>
-            </tr>
-            <tr data-spanish="Inolvidable." data-english="Unforgettable">
-              <td><b>Inolvidable</b></td>
-              <td>Unforgettable</td>
-              <td>Used to describe a special or wonderful day.</td>
-              <td>
-                <div class="ttools">
-                  <button class="btn small speak" type="button">▶ Speak</button>
-                  <button class="btn small secondary mic" type="button">🎙 Repeat</button>
-                  <span class="status muted">Ready</span>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- 2. Periphrastic Future -->
-    <section class="card">
-      <h2>2) The Periphrastic Future: <code>ir</code> + <code>a</code> + Infinitive</h2>
-      <div class="note">
-        Corresponds to “I am going to [verb]” and is used for near-future plans.<br/>
-        Formula: <b>Conjugated</b> verb <code>ir</code> + <code>a</code> + <b>Infinitive</b>.
-      </div>
-
-      <div class="item" data-spanish="Yo voy a cantar." data-english="I am going to sing.">
-        <div class="sp">Yo voy a cantar.</div>
-        <div class="en">I am going to sing.</div>
-        <div class="tools">
-          <button class="btn speak" type="button">▶ Speak</button>
-          <button class="btn secondary mic" type="button">🎙 Repeat</button>
-          <span class="status muted">Ready</span>
-        </div>
-      </div>
-
-      <div class="item" data-spanish="Vamos a ir a la iglesia." data-english="We are going to go to church.">
-        <div class="sp">Vamos a ir a la iglesia.</div>
-        <div class="en">We are going to go to church.</div>
-        <div class="tools">
-          <button class="btn speak" type="button">▶ Speak</button>
-          <button class="btn secondary mic" type="button">🎙 Repeat</button>
-          <span class="status muted">Ready</span>
-        </div>
-      </div>
-
-      <div class="item" data-spanish="Vas a desayunar tostadas." data-english="You are going to have toast.">
-        <div class="sp">Vas a desayunar tostadas.</div>
-        <div class="en">You are going to have toast.</div>
-        <div class="tools">
-          <button class="btn speak" type="button">▶ Speak</button>
-          <button class="btn secondary mic" type="button">🎙 Repeat</button>
-          <span class="status muted">Ready</span>
-        </div>
-      </div>
-
-      <div class="item" data-spanish="Van a jugar al fútbol." data-english="They are going to play soccer.">
-        <div class="sp">Van a jugar al fútbol.</div>
-        <div class="en">They are going to play soccer.</div>
-        <div class="tools">
-          <button class="btn speak" type="button">▶ Speak</button>
-          <button class="btn secondary mic" type="button">🎙 Repeat</button>
-          <span class="status muted">Ready</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. Simple Future -->
-    <section class="card">
-      <h2>3) The Simple Future (Futuro Simple)</h2>
-      <div class="note">
-        Corresponds to “I will [verb].” For regular verbs, you add the ending to the infinitive.
-      </div>
-
-      <div class="item">
-        <div class="sp">Regular Endings</div>
-        <div class="note">
-          Same for <b>-ar</b>, <b>-er</b>, and <b>-ir</b> verbs:
-          <code>-é</code>, <code>-ás</code>, <code>-á</code>, <code>-emos</code>, <code>-éis</code>, <code>-án</code>.
-        </div>
-      </div>
-
-      <div class="item">
-        <div class="sp">Irregular Verbs (Stem-Changers)</div>
-        <div class="note">
-          These verbs have a special stem but use the same endings as regular verbs.
-        </div>
-
-        <div style="margin-top:10px; overflow:auto;">
-          <table>
-            <thead>
-              <tr>
-                <th>Verb</th>
-                <th>Future Stem</th>
-                <th>Full Conjugation (Yo, Tú, Él, Nos., Vos., Ellos)</th>
-                <th class="nowrap">Audio</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr data-spanish="Tener. Tendré, tendrás, tendrá, tendremos, tendréis, tendrán." data-english="To have">
-                <td><b>Tener</b></td>
-                <td>Tendr-</td>
-                <td>tendré, tendrás, tendrá, tendremos, tendréis, tendrán</td>
-                <td class="nowrap">
-                  <button class="btn small speak" type="button">▶ Speak</button>
-                </td>
-              </tr>
-              <tr data-spanish="Venir. Vendré, vendrás, vendrá, vendremos, vendréis, vendrán." data-english="To come">
-                <td><b>Venir</b></td>
-                <td>Vendr-</td>
-                <td>vendré, vendrás, vendrá, vendremos, vendréis, vendrán</td>
-                <td class="nowrap">
-                  <button class="btn small speak" type="button">▶ Speak</button>
-                </td>
-              </tr>
-              <tr data-spanish="Poner. Pondré, pondrás, pondrá, pondremos, pondréis, pondrán." data-english="To put">
-                <td><b>Poner</b></td>
-                <td>Pondr-</td>
-                <td>pondré, pondrás, pondrá, pondremos, pondréis, pondrán</td>
-                <td class="nowrap">
-                  <button class="btn small speak" type="button">▶ Speak</button>
-                </td>
-              </tr>
-              <tr data-spanish="Poder. Podré, podrás, podrá, podremos, podréis, podrán." data-english="To be able to">
-                <td><b>Poder</b></td>
-                <td>Podr-</td>
-                <td>podré, podrás, podrá, podremos, podréis, podrán</td>
-                <td class="nowrap">
-                  <button class="btn small speak" type="button">▶ Speak</button>
-                </td>
-              </tr>
-              <tr data-spanish="Salir. Saldré, saldrás, saldrá, saldremos, saldréis, saldrán." data-english="To leave / go out">
-                <td><b>Salir</b></td>
-                <td>Saldr-</td>
-                <td>saldré, saldrás, saldrá, saldremos, saldréis, saldrán</td>
-                <td class="nowrap">
-                  <button class="btn small speak" type="button">▶ Speak</button>
-                </td>
-              </tr>
-              <tr data-spanish="Hacer. Haré, harás, hará, haremos, haréis, harán." data-english="To do / make">
-                <td><b>Hacer</b></td>
-                <td>Har-</td>
-                <td>haré, harás, hará, haremos, haréis, harán</td>
-                <td class="nowrap">
-                  <button class="btn small speak" type="button">▶ Speak</button>
-                </td>
-              </tr>
-              <tr data-spanish="Saber. Sabré, sabrás, sabrá, sabremos, sabréis, sabrán." data-english="To know (a fact)">
-                <td><b>Saber</b></td>
-                <td>Sabr-</td>
-                <td>sabré, sabrás, sabrá, sabremos, sabréis, sabrán</td>
-                <td class="nowrap">
-                  <button class="btn small speak" type="button">▶ Speak</button>
-                </td>
-              </tr>
-              <tr data-spanish="Querer. Querré, querrás, querrá, querremos, querréis, querrán." data-english="To want / love">
-                <td><b>Querer</b></td>
-                <td>Querr-</td>
-                <td>querré, querrás, querrá, querremos, querréis, querrán</td>
-                <td class="nowrap">
-                  <button class="btn small speak" type="button">▶ Speak</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="note" style="margin-top:10px">
-          Tip: click <b>▶ Speak</b> on a verb row to hear the whole conjugation in one go.
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. Practice Exercise Answers -->
-    <section class="card">
-      <h2>4) Practice Exercise Answers</h2>
-      <div class="note">Spanish translations for the practice exercises provided previously:</div>
-
-      <div class="item" data-spanish="El próximo año, tendré más dinero." data-english="Next year, I will have more money.">
-        <div class="en"><b>English:</b> Next year, I will have more money.</div>
-        <div class="sp">El próximo año, tendré más dinero.</div>
-        <div class="tools">
-          <button class="btn speak" type="button">▶ Speak</button>
-          <button class="btn secondary mic" type="button">🎙 Repeat</button>
-          <span class="status muted">Ready</span>
-        </div>
-      </div>
-
-      <div class="item" data-spanish="Este fin de semana, vamos a viajar." data-english="This weekend, we are going to travel.">
-        <div class="en"><b>English:</b> This weekend, we are going to travel.</div>
-        <div class="sp">Este fin de semana, vamos a viajar.</div>
-        <div class="tools">
-          <button class="btn speak" type="button">▶ Speak</button>
-          <button class="btn secondary mic" type="button">🎙 Repeat</button>
-          <span class="status muted">Ready</span>
-        </div>
-      </div>
-
-      <div class="item" data-spanish="Ellos saldrán de casa a las ocho." data-english="They will leave the house at 8:00.">
-        <div class="en"><b>English:</b> They will leave the house at 8:00.</div>
-        <div class="sp">Ellos saldrán de casa a las ocho.</div>
-        <div class="tools">
-          <button class="btn speak" type="button">▶ Speak</button>
-          <button class="btn secondary mic" type="button">🎙 Repeat</button>
-          <span class="status muted">Ready</span>
-        </div>
-      </div>
-
-      <div class="item" data-spanish="Yo voy a aprender español." data-english="I am going to learn Spanish.">
-        <div class="en"><b>English:</b> I am going to learn Spanish.</div>
-        <div class="sp">Yo voy a aprender español.</div>
-        <div class="tools">
-          <button class="btn speak" type="button">▶ Speak</button>
-          <button class="btn secondary mic" type="button">🎙 Repeat</button>
-          <span class="status muted">Ready</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>Quick Notes</h2>
-      <ul class="note">
-        <li>If you don’t see “Google Español de Estados Unidos,” it means your browser/OS isn’t exposing it via Web Speech.</li>
-        <li>Chrome desktop usually has the best voice + mic support.</li>
-      </ul>
-    </section>
+<!-- HEADER -->
+<div class="card">
+  <h1>Spanish Class – The Future</h1>
+  <div class="sub">
+    Tap ▶ Speak to hear Spanish. Best voice is auto-selected if available.
   </div>
 
+  <div class="controls">
+    <label>Voice</label>
+    <select id="voiceSelect"></select>
+
+    <label>Speed</label>
+    <input id="rate" type="range" min="0.6" max="1.2" step="0.05" value="0.95">
+
+    <button class="btn secondary" id="stopBtn">Stop</button>
+    <div class="note" id="voiceHint"></div>
+  </div>
+</div>
+
+<!-- VOCABULARY -->
+<div class="card">
+<h2>1) Vocabulary & Clarifications</h2>
+
+<div class="vocab" data-spanish="Roscón de Reyes.">
+<b>Roscón de Reyes</b><br>
+King's Cake – A round sweet bread eaten for Epiphany.
+<div class="tools">
+<button class="btn speak">▶ Speak</button>
+</div>
+</div>
+
+<div class="vocab" data-spanish="Nata.">
+<b>Nata</b><br>
+Cream – Usually whipped cream in cakes.
+<div class="tools"><button class="btn speak">▶ Speak</button></div>
+</div>
+
+<div class="vocab" data-spanish="Pantalla.">
+<b>Pantalla</b><br>
+Screen – Computer or device screen.
+<div class="tools"><button class="btn speak">▶ Speak</button></div>
+</div>
+
+<div class="vocab" data-spanish="Caber.">
+<b>Caber</b><br>
+To fit – Describes capacity.
+<div class="tools"><button class="btn speak">▶ Speak</button></div>
+</div>
+
+<div class="vocab" data-spanish="Valer.">
+<b>Valer</b><br>
+To cost / be worth.
+<div class="tools"><button class="btn speak">▶ Speak</button></div>
+</div>
+
+<div class="vocab" data-spanish="Sin duda.">
+<b>Sin duda</b><br>
+Without a doubt.
+<div class="tools"><button class="btn speak">▶ Speak</button></div>
+</div>
+
+<div class="vocab" data-spanish="Inolvidable.">
+<b>Inolvidable</b><br>
+Unforgettable.
+<div class="tools"><button class="btn speak">▶ Speak</button></div>
+</div>
+</div>
+
+<!-- PERIPHRASTIC FUTURE -->
+<div class="card">
+<h2>2) Periphrastic Future (ir + a)</h2>
+
+<div class="item" data-spanish="Yo voy a cantar.">
+<div class="sp">Yo voy a cantar.</div>
+<div class="en">I am going to sing.</div>
+<div class="tools"><button class="btn speak">▶ Speak</button></div>
+</div>
+
+<div class="item" data-spanish="Vamos a ir a la iglesia.">
+<div class="sp">Vamos a ir a la iglesia.</div>
+<div class="en">We are going to go to church.</div>
+<div class="tools"><button class="btn speak">▶ Speak</button></div>
+</div>
+</div>
+
+<!-- SIMPLE FUTURE -->
+<div class="card">
+<h2>3) Simple Future (Futuro Simple)</h2>
+<div class="note">
+Same endings for all verbs: é, ás, á, emos, éis, án
+</div>
+
+<div class="item" data-spanish="Tendré, tendrás, tendrá, tendremos, tendréis, tendrán.">
+<div class="sp">Tener → Tendr-</div>
+<div class="en">tendré, tendrás, tendrá, tendremos, tendréis, tendrán</div>
+<div class="tools"><button class="btn speak">▶ Speak</button></div>
+</div>
+</div>
+
+<!-- PRACTICE -->
+<div class="card">
+<h2>4) Practice Answers</h2>
+
+<div class="item" data-spanish="El próximo año, tendré más dinero.">
+<div class="sp">El próximo año, tendré más dinero.</div>
+<div class="en">Next year, I will have more money.</div>
+<div class="tools"><button class="btn speak">▶ Speak</button></div>
+</div>
+
+<div class="item" data-spanish="Yo voy a aprender español.">
+<div class="sp">Yo voy a aprender español.</div>
+<div class="en">I am going to learn Spanish.</div>
+<div class="tools"><button class="btn speak">▶ Speak</button></div>
+</div>
+</div>
+
+</div>
+
 <script>
-  // ----- Voice preference -----
-  // We try to auto-select a voice whose name includes these words.
-  const PREFERRED_VOICE_MATCH = [
-    "google",
-    "español",
-    "estados unidos"
-  ];
+const preferred = ["google","español","estados unidos"];
+const voiceSelect = document.getElementById("voiceSelect");
+const rate = document.getElementById("rate");
+const stopBtn = document.getElementById("stopBtn");
+const voiceHint = document.getElementById("voiceHint");
 
-  // ---------- Helpers ----------
-  const voiceSelect = document.getElementById('voiceSelect');
-  const rate = document.getElementById('rate');
-  const rateVal = document.getElementById('rateVal');
-  const stopBtn = document.getElementById('stopBtn');
-  const voiceHint = document.getElementById('voiceHint');
-
-  function normalizeForMatch(s) {
-    return (s || "")
-      .toLowerCase()
-      .trim()
-      .replace(/[¡!¿?.,;:()"]/g, "")
-      .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // remove accents
-      .replace(/\s+/g, " ");
-  }
-
-  function voiceNameMatchesPreferred(name) {
-    const n = (name || "").toLowerCase();
-    return PREFERRED_VOICE_MATCH.every(part => n.includes(part));
-  }
-
-  function loadVoicesAndAutoSelect() {
-    const voices = window.speechSynthesis?.getVoices?.() || [];
-
-    voiceSelect.innerHTML = "";
-    voices.forEach(v => {
-      const opt = document.createElement("option");
-      opt.value = v.name;
-      opt.textContent = `${v.name} (${v.lang})`;
-      voiceSelect.appendChild(opt);
-    });
-
-    // 1) Try preferred Google Español de Estados Unidos
-    const preferred = voices.find(v => voiceNameMatchesPreferred(v.name));
-
-    // 2) Otherwise pick any es-US, then any Spanish voice
-    const esUS = voices.find(v => (v.lang || "").toLowerCase() === "es-us");
-    const spanish = voices.find(v => (v.lang || "").toLowerCase().startsWith("es"));
-
-    const chosen = preferred || esUS || spanish || voices[0] || null;
-
-    if (chosen) {
-      voiceSelect.value = chosen.name;
-      const prefText = preferred ? "✓ Preferred voice selected" : "Selected best available voice";
-      voiceHint.textContent = `${prefText}: ${chosen.name} (${chosen.lang})`;
-    } else {
-      voiceHint.textContent = "No TTS voices found in this browser.";
-    }
-  }
-
-  function getSelectedVoice() {
-    const voices = window.speechSynthesis?.getVoices?.() || [];
-    return voices.find(v => v.name === voiceSelect.value) || null;
-  }
-
-  function speak(text) {
-    if (!window.speechSynthesis) return;
-
-    window.speechSynthesis.cancel();
-
-    const u = new SpeechSynthesisUtterance(text);
-    u.rate = parseFloat(rate.value);
-
-    const chosen = getSelectedVoice();
-    if (chosen) {
-      u.voice = chosen;
-      u.lang = chosen.lang || "es-US";
-    } else {
-      u.lang = "es-US";
-    }
-
-    window.speechSynthesis.speak(u);
-  }
-
-  rate.addEventListener("input", () => rateVal.textContent = `${rate.value}×`);
-  stopBtn.addEventListener("click", () => window.speechSynthesis?.cancel?.());
-
-  if (window.speechSynthesis) {
-    loadVoicesAndAutoSelect();
-    window.speechSynthesis.onvoiceschanged = loadVoicesAndAutoSelect;
-  }
-
-  // Attach Speak buttons (works for .item cards and table rows)
-  document.querySelectorAll("[data-spanish]").forEach(node => {
-    const speakBtn = node.querySelector(".speak");
-    if (!speakBtn) return;
-    speakBtn.addEventListener("click", () => speak(node.dataset.spanish));
+function loadVoices(){
+  const voices = speechSynthesis.getVoices();
+  voiceSelect.innerHTML="";
+  voices.forEach(v=>{
+    const o=document.createElement("option");
+    o.value=v.name;
+    o.textContent=`${v.name} (${v.lang})`;
+    voiceSelect.appendChild(o);
   });
-
-  // ---------- Speech Recognition ----------
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  const recognitionSupported = !!SpeechRecognition;
-
-  function setStatus(node, html, cls) {
-    const el = node.querySelector(".status");
-    if (!el) return;
-    el.className = "status " + (cls || "muted");
-    el.innerHTML = html;
+  const pick=voices.find(v=>preferred.every(p=>v.name.toLowerCase().includes(p)))
+    || voices.find(v=>v.lang.startsWith("es"))
+    || voices[0];
+  if(pick){
+    voiceSelect.value=pick.name;
+    voiceHint.textContent=`Voice: ${pick.name}`;
   }
+}
+speechSynthesis.onvoiceschanged=loadVoices;
+loadVoices();
 
-  function listenAndCheck(node) {
-    if (!recognitionSupported) {
-      setStatus(node, "Speech recognition not supported here. Try Chrome desktop.", "bad");
-      return;
-    }
+function speak(text){
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  u.rate=rate.value;
+  const v=[...speechSynthesis.getVoices()].find(x=>x.name===voiceSelect.value);
+  if(v){u.voice=v; u.lang=v.lang;}
+  speechSynthesis.speak(u);
+}
 
-    const target = node.dataset.spanish || "";
-    const targetNorm = normalizeForMatch(target);
-
-    const rec = new SpeechRecognition();
-    rec.lang = "es-US";
-    rec.interimResults = false;
-    rec.maxAlternatives = 1;
-
-    setStatus(node, "Listening… speak now.", "muted");
-
-    rec.onresult = (e) => {
-      const heard = e.results[0][0].transcript || "";
-      const heardNorm = normalizeForMatch(heard);
-
-      const ok = (heardNorm === targetNorm) ||
-                 (heardNorm.includes(targetNorm)) ||
-                 (targetNorm.includes(heardNorm) && heardNorm.length > 6);
-
-      if (ok) {
-        setStatus(node, `Heard: “${heard}” <span class="good"><b>✓ Nice!</b></span>`, "good");
-      } else {
-        setStatus(node, `Heard: “${heard}” <span class="bad"><b>✗ Try again</b></span><br/><span class="muted">Expected: “${target}”</span>`, "bad");
-      }
-    };
-
-    rec.onerror = (e) => setStatus(node, `Mic error: ${e.error || "unknown"} (check permissions)`, "bad");
-    rec.start();
-  }
-
-  document.querySelectorAll("[data-spanish]").forEach(node => {
-    const micBtn = node.querySelector(".mic");
-    if (!micBtn) return;
-
-    if (!recognitionSupported) {
-      micBtn.disabled = true;
-      micBtn.textContent = "🎙 Repeat (not supported)";
-    } else {
-      micBtn.addEventListener("click", () => listenAndCheck(node));
-    }
-  });
+document.querySelectorAll(".speak").forEach(btn=>{
+  btn.onclick=()=>speak(btn.closest("[data-spanish]").dataset.spanish);
+});
+stopBtn.onclick=()=>speechSynthesis.cancel();
 </script>
 </body>
 </html>
