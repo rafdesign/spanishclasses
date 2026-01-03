@@ -20,6 +20,7 @@
   h2{ margin:0 0 10px; font-size: 20px; line-height: 1.2; }
   .sub{ color:#444; font-size: 15px; line-height: 1.35; }
   .note{ color:#555; font-size: 14px; line-height: 1.4; margin-top: 6px; }
+  .hint{ font-size: 13px; color:#666; }
 
   /* Controls */
   .controls{ display:flex; flex-direction: column; gap: 12px; margin-top: 12px; }
@@ -33,6 +34,7 @@
     border:1px solid #ddd;
     background:#fff;
   }
+
   .btn{
     width:100%;
     font-size: 16px;
@@ -50,7 +52,6 @@
     color:#111;
     font-weight: 800;
   }
-  .hint{ font-size: 13px; color:#666; }
 
   /* Lesson items */
   .item{
@@ -64,7 +65,6 @@
   .en{ font-size: 15px; color:#444; line-height: 1.35; margin-top: 6px; }
   .tools{ display:flex; flex-direction: column; gap:10px; margin-top: 12px; }
 
-  /* Desktop layout enhancement */
   @media (min-width: 900px){
     .wrap{ padding: 18px; }
     h1{ font-size: 28px; }
@@ -77,9 +77,6 @@
       gap: 12px;
       align-items: end;
     }
-    .controls .controlRow:nth-child(3){ grid-column: 1 / span 2; }
-    .controls .controlRow:nth-child(4){ grid-column: 3; }
-
     .tools{
       flex-direction: row;
       align-items: center;
@@ -117,10 +114,10 @@
       <div class="controlRow">
         <button class="btn secondary" id="stopBtn" type="button">■ Stop</button>
       </div>
+    </div>
 
-      <div class="controlRow">
-        <div class="hint" id="envHint">Ready</div>
-      </div>
+    <div class="note">
+      Tip: If you ever embed this inside a website builder and the voice list is empty, open this page directly (GitHub Pages) instead.
     </div>
   </div>
 
@@ -345,17 +342,10 @@
     </div>
   </div>
 
-  <div class="card">
-    <h2>Notes</h2>
-    <ul class="note">
-      <li>If the voice dropdown is empty, your embed environment is blocking Web Speech voices. Open the page directly (GitHub Pages) for best results.</li>
-      <li>Tap Stop if you want to cancel speech mid-sentence.</li>
-    </ul>
-  </div>
-
 </div>
 
 <script>
+  // Auto-select voice preference: "Google Español de Estados Unidos" (if available)
   const PREFERRED_VOICE_PARTS = ["google", "español", "estados unidos"];
 
   const voiceSelect = document.getElementById("voiceSelect");
@@ -363,7 +353,6 @@
   const rateVal = document.getElementById("rateVal");
   const stopBtn = document.getElementById("stopBtn");
   const voiceHint = document.getElementById("voiceHint");
-  const envHint = document.getElementById("envHint");
 
   function voiceNameMatchesPreferred(name) {
     const n = (name || "").toLowerCase();
@@ -388,18 +377,12 @@
 
     if (chosen) {
       voiceSelect.value = chosen.name;
-      voiceHint.textContent = preferred ? `✓ Preferred voice selected: ${chosen.name}` : `Voice: ${chosen.name}`;
-      envHint.textContent = "Ready";
+      voiceHint.textContent = preferred
+        ? `Selected: ${chosen.name} (preferred)`
+        : `Selected: ${chosen.name}`;
     } else {
       voiceHint.textContent = "No voices found in this browser environment.";
-      envHint.textContent = "No voices available";
     }
-
-    // Some embeds block voices entirely
-    setTimeout(() => {
-      const v2 = window.speechSynthesis?.getVoices?.() || [];
-      if (!v2.length) envHint.textContent = "No voices here (embed restriction). Open directly.";
-    }, 800);
   }
 
   function getSelectedVoice() {
@@ -421,6 +404,7 @@
     } else {
       u.lang = "es-US";
     }
+
     window.speechSynthesis.speak(u);
   }
 
@@ -435,7 +419,7 @@
     window.speechSynthesis.onvoiceschanged = loadVoicesAndAutoSelect;
   }
 
-  // Hook up all Speak buttons
+  // Hook up Speak buttons
   document.querySelectorAll("[data-spanish]").forEach(node => {
     const speakBtn = node.querySelector(".speak");
     if (speakBtn) speakBtn.addEventListener("click", () => speak(node.dataset.spanish));
