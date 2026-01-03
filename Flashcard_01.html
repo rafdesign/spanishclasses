@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-<title>Spanish Flashcards - Game Only</title>
+<title>Spanish Flashcards - Full Vocabulary</title>
 
 <style>
   :root {
@@ -13,14 +13,13 @@
     margin: 0; 
     background: #fafafa; 
     color: #111; 
-    padding-bottom: 180px; /* Space for the fixed bottom buttons */
+    padding-bottom: 180px; 
     display: flex;
     flex-direction: column;
     min-height: 100vh;
   }
   .wrap { max-width: 600px; width: 100%; margin: 0 auto; padding: 14px; box-sizing: border-box; }
   
-  /* Game Area */
   .game-container { 
     text-align: center; 
     padding: 40px 20px; 
@@ -35,7 +34,7 @@
     flex-direction: column;
     align-items: center; 
     justify-content: center; 
-    font-size: 32px; 
+    font-size: 28px; 
     font-weight: 800; 
     padding: 15px; 
     border: 2px dashed #444; 
@@ -44,18 +43,16 @@
   }
   .answer-text { 
     color: #00ffcc; 
-    font-size: 24px; 
+    font-size: 22px; 
     min-height: 35px; 
     margin-top: 10px; 
-    visibility: hidden; /* Keeps the word "Enfermo" static by reserving space */
+    visibility: hidden; 
   }
 
-  /* Direction Select */
   .settings-card { background: #fff; border: 1px solid #eaeaea; border-radius: 12px; padding: 20px; margin-top: 20px; }
   select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 16px; background: #fff; }
   label { font-size: 14px; font-weight: 700; color: #444; margin-bottom: 8px; display: block; }
 
-  /* Fixed Bottom Control Bar */
   .fixed-controls {
     position: fixed;
     bottom: 0;
@@ -128,26 +125,50 @@
   const voiceSelect = document.getElementById("voiceSelect");
   const directionSelect = document.getElementById("gameDirection");
   
-  // Vocabulary is now stored here internally rather than displayed in a list
+  // Comprehensive Vocabulary List
   const vocabulary = [
     { es: "Triste", en: "Sad" },
+    { es: "La tristeza", en: "Sadness" },
+    { es: "Deprimido / Deprimida", en: "Depressed" },
+    { es: "La depresión", en: "Depression (illness)" },
     { es: "Feliz", en: "Happy" },
-    { es: "Cansado", en: "Tired" },
-    { es: "Enojado", en: "Angry" },
-    { es: "Confundido", en: "Confused" },
-    { es: "Enfermo", en: "Sick" }
+    { es: "La felicidad", en: "Happiness" },
+    { es: "Enamorado / Enamorada", en: "In love" },
+    { es: "El enamoramiento", en: "Falling in love" },
+    { es: "Furioso / Furiosa", en: "Furious" },
+    { es: "La furia", en: "Fury" },
+    { es: "Enfadado / Enfadada", en: "Angry" },
+    { es: "El enfado", en: "Anger" },
+    { es: "Cabreado / Cabreada", en: "Pissed off (informal)" },
+    { es: "El cabreo", en: "Anger (informal)" },
+    { es: "Aburrido / Aburrida", en: "Bored" },
+    { es: "El aburrimiento", en: "Boredom" },
+    { es: "Apático / Apática", en: "Apathetic" },
+    { es: "La apatía", en: "Apathy" },
+    { es: "Sorprendido / Sorprendida", en: "Surprised" },
+    { es: "La sorpresa", en: "Surprise" },
+    { es: "Cansado / Cansada", en: "Tired" },
+    { es: "El cansancio", en: "Tiredness" },
+    { es: "Relajado / Relajada", en: "Relaxed" },
+    { es: "La relajación", en: "Relaxation" },
+    { es: "Tranquilo / Tranquila", en: "Calm" },
+    { es: "La tranquilidad", en: "Calmness" },
+    { es: "Confuso / Confusa", en: "Confused" },
+    { es: "La confusión", en: "Confusion" },
+    { es: "Hambriento / Hambrienta", en: "Hungry" },
+    { es: "El hambre", en: "Hunger" },
+    { es: "Enfermo / Enferma", en: "Sick" },
+    { es: "La enfermedad", en: "Illness" }
   ];
 
   let currentItem = null;
 
-  // --- AUDIO LOGIC ---
   function loadVoices() {
     const voices = window.speechSynthesis.getVoices();
     voiceSelect.innerHTML = voices
       .map(v => `<option value="${v.name}">${v.name}</option>`)
       .join("");
 
-    // Automatically set favorite: Google Español de Estados Unidos
     const favorite = voices.find(v => v.name.includes("Google") && v.lang.includes("es-US"));
     if (favorite) voiceSelect.value = favorite.name;
   }
@@ -164,7 +185,6 @@
   window.speechSynthesis.onvoiceschanged = loadVoices;
   document.getElementById("stopBtn").onclick = () => window.speechSynthesis.cancel();
 
-  // --- GAME LOGIC ---
   function nextCard() {
     currentItem = vocabulary[Math.floor(Math.random() * vocabulary.length)];
     answerDisplay.style.visibility = "hidden";
@@ -188,7 +208,6 @@
     if (currentItem) speak(currentItem.es);
   };
 
-  // Start the first card automatically
   window.onload = () => {
     loadVoices();
     nextCard();
