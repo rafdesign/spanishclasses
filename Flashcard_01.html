@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+<title>Spanish Flashcards - Game Only</title>
+
+<style>
+  :root {
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  body { 
+    margin: 0; 
+    background: #fafafa; 
+    color: #111; 
+    padding-bottom: 180px; /* Space for the fixed bottom buttons */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 600px; width: 100%; margin: 0 auto; padding: 14px; box-sizing: border-box; }
+  
+  /* Game Area */
+  .game-container { 
+    text-align: center; 
+    padding: 40px 20px; 
+    background: #111; 
+    color: #fff; 
+    border-radius: 16px; 
+    margin-top: 20px;
+  }
+  .flashcard { 
+    min-height: 150px; 
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    font-size: 32px; 
+    font-weight: 800; 
+    padding: 15px; 
+    border: 2px dashed #444; 
+    border-radius: 15px;
+    margin-bottom: 15px;
+  }
+  .answer-text { 
+    color: #00ffcc; 
+    font-size: 24px; 
+    min-height: 35px; 
+    margin-top: 10px; 
+    visibility: hidden; /* Keeps the word "Enfermo" static by reserving space */
+  }
+
+  /* Direction Select */
+  .settings-card { background: #fff; border: 1px solid #eaeaea; border-radius: 12px; padding: 20px; margin-top: 20px; }
+  select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 16px; background: #fff; }
+  label { font-size: 14px; font-weight: 700; color: #444; margin-bottom: 8px; display: block; }
+
+  /* Fixed Bottom Control Bar */
+  .fixed-controls {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    padding: 15px;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+  }
+  .button-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 15px 5px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .btn-reveal { background: #007bff; color: white; }
+  .btn-next { background: #28a745; color: white; }
+  .btn-speak { background: #6f42c1; color: white; }
+  .btn-stop { background: #dc3545; color: white; margin-top: 5px; }
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <div class="game-container">
+    <div class="flashcard" id="cardDisplay">Tap "NEXT" to start</div>
+    <div id="answerDisplay" class="answer-text">Answer hidden</div>
+  </div>
+
+  <div class="settings-card">
+    <label>Translation Direction:</label>
+    <select id="gameDirection">
+        <option value="es-en">Spanish ➔ English</option>
+        <option value="en-es">English ➔ Spanish</option>
+    </select>
+    
+    <label style="margin-top: 20px;">Voice Engine:</label>
+    <select id="voiceSelect"></select>
+  </div>
+
+  <div class="fixed-controls">
+    <div class="button-row">
+        <button class="btn btn-reveal" id="revealBtn">REVEAL</button>
+        <button class="btn btn-next" id="nextBtn">NEXT</button>
+        <button class="btn btn-speak" id="gameSpeakBtn">SPEAK</button>
+    </div>
+    <button class="btn btn-stop" id="stopBtn">STOP ALL AUDIO</button>
+  </div>
+
+</div>
+
+<script>
+  const cardDisplay = document.getElementById("cardDisplay");
+  const answerDisplay = document.getElementById("answerDisplay");
+  const voiceSelect = document.getElementById("voiceSelect");
+  const directionSelect = document.getElementById("gameDirection");
+  
+  // Vocabulary is now stored here internally rather than displayed in a list
+  const vocabulary = [
+    { es: "Triste", en: "Sad" },
+    { es: "Feliz", en: "Happy" },
+    { es: "Cansado", en: "Tired" },
+    { es: "Enojado", en: "Angry" },
+    { es: "Confundido", en: "Confused" },
+    { es: "Enfermo", en: "Sick" }
+  ];
+
+  let currentItem = null;
+
+  // --- AUDIO LOGIC ---
+  function loadVoices() {
+    const voices = window.speechSynthesis.getVoices();
+    voiceSelect.innerHTML = voices
+      .map(v => `<option value="${v.name}">${v.name}</option>`)
+      .join("");
+
+    // Automatically set favorite: Google Español de Estados Unidos
+    const favorite = voices.find(v => v.name.includes("Google") && v.lang.includes("es-US"));
+    if (favorite) voiceSelect.value = favorite.name;
+  }
+
+  function speak(text) {
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    const voices = window.speechSynthesis.getVoices();
+    u.voice = voices.find(v => v.name === voiceSelect.value);
+    u.lang = "es-US";
+    window.speechSynthesis.speak(u);
+  }
+
+  window.speechSynthesis.onvoiceschanged = loadVoices;
+  document.getElementById("stopBtn").onclick = () => window.speechSynthesis.cancel();
+
+  // --- GAME LOGIC ---
+  function nextCard() {
+    currentItem = vocabulary[Math.floor(Math.random() * vocabulary.length)];
+    answerDisplay.style.visibility = "hidden";
+    
+    if (directionSelect.value === "es-en") {
+        cardDisplay.textContent = currentItem.es;
+    } else {
+        cardDisplay.textContent = currentItem.en;
+    }
+  }
+
+  function reveal() {
+    if (!currentItem) return;
+    answerDisplay.style.visibility = "visible";
+    answerDisplay.textContent = (directionSelect.value === "es-en") ? currentItem.en : currentItem.es;
+  }
+
+  document.getElementById("nextBtn").onclick = nextCard;
+  document.getElementById("revealBtn").onclick = reveal;
+  document.getElementById("gameSpeakBtn").onclick = () => {
+    if (currentItem) speak(currentItem.es);
+  };
+
+  // Start the first card automatically
+  window.onload = () => {
+    loadVoices();
+    nextCard();
+  };
+</script>
+</body>
+</html>
