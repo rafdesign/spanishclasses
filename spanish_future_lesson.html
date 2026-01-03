@@ -3,292 +3,643 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Spanish Class – Future Tenses</title>
+<title>Spanish Class – Future Tenses + Vocabulary</title>
 
 <style>
-/* ---------- Base ---------- */
-:root {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-               Roboto, Helvetica, Arial, sans-serif;
-}
-body {
-  margin: 0;
-  background: #fafafa;
-  color: #111;
-}
-.wrap {
-  max-width: 900px;
-  margin: auto;
-  padding: 16px;
-}
-.card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 18px;
-  margin-bottom: 18px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-}
-h1 {
-  font-size: 26px;
-  margin-bottom: 8px;
-}
-h2 {
-  font-size: 22px;
-  margin-top: 0;
-}
-.sub {
-  font-size: 16px;
-  color: #444;
-  margin-bottom: 12px;
-}
-.note {
-  font-size: 14px;
-  color: #555;
-  line-height: 1.4;
-}
-
-/* ---------- Controls ---------- */
-.controls {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-label {
-  font-size: 14px;
-  font-weight: 600;
-}
-select, input[type="range"] {
-  font-size: 16px;
-  padding: 10px;
-}
-button {
-  font-size: 16px;
-  padding: 14px;
-  border-radius: 14px;
-  border: none;
-  cursor: pointer;
-}
-.btn {
-  background: #111;
-  color: #fff;
-}
-.btn.secondary {
-  background: #fff;
-  color: #111;
-  border: 1px solid #ddd;
-}
-.status {
-  font-size: 14px;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px dashed #ddd;
-}
-
-/* ---------- Content blocks ---------- */
-.item {
-  border: 1px solid #eee;
-  border-radius: 14px;
-  padding: 14px;
-  margin-top: 12px;
-}
-.sp {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-.en {
-  font-size: 15px;
-  color: #444;
-}
-.tools {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-/* ---------- Vocabulary cards ---------- */
-.vocab {
-  border: 1px solid #eee;
-  border-radius: 14px;
-  padding: 14px;
-  margin-top: 12px;
-}
-.vocab b {
-  font-size: 20px;
-}
-
-/* ---------- Desktop enhancements ---------- */
-@media (min-width: 900px) {
-  .tools {
-    flex-direction: row;
-    align-items: center;
+  :root{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
-}
+  body{ margin:0; background:#fafafa; color:#111; }
+  .wrap{ max-width: 980px; margin: 0 auto; padding: 14px; }
+  .card{
+    background:#fff; border:1px solid #eaeaea; border-radius: 16px;
+    padding: 16px; margin: 14px 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  h1{ margin:0 0 8px; font-size: 24px; line-height: 1.2; }
+  h2{ margin:0 0 10px; font-size: 20px; line-height: 1.2; }
+  .sub{ color:#444; font-size: 15px; line-height: 1.35; }
+  .note{ color:#555; font-size: 14px; line-height: 1.4; margin-top: 6px; }
+
+  /* Controls */
+  .controls{ display:flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+  .controlRow{ display:grid; gap:8px; }
+  label{ font-size: 14px; font-weight: 700; color:#222; }
+  select, input[type="range"]{
+    width:100%;
+    font-size:16px;
+    padding: 10px;
+    border-radius: 12px;
+    border:1px solid #ddd;
+    background:#fff;
+  }
+  .btn{
+    width:100%;
+    font-size: 16px;
+    padding: 14px 14px;
+    border-radius: 14px;
+    border:1px solid #111;
+    background:#111;
+    color:#fff;
+    font-weight: 800;
+    cursor:pointer;
+  }
+  .btn.secondary{
+    border:1px solid #ddd;
+    background:#fff;
+    color:#111;
+    font-weight: 800;
+  }
+  .btn.small{
+    width:auto;
+    padding: 10px 12px;
+    font-size: 15px;
+    border-radius: 12px;
+  }
+  .hint{ font-size: 13px; color:#666; }
+
+  /* Lesson items */
+  .item{
+    border: 1px solid #eee;
+    background:#fcfcfc;
+    border-radius: 14px;
+    padding: 14px;
+    margin-top: 12px;
+  }
+  .sp{ font-size: 20px; font-weight: 800; line-height: 1.35; }
+  .en{ font-size: 15px; color:#444; line-height: 1.35; margin-top: 6px; }
+  .tools{ display:flex; flex-direction: column; gap:10px; margin-top: 12px; }
+  .status{
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 12px;
+    border:1px dashed #ddd;
+    background:#fff;
+    color:#444;
+  }
+  .good{ color:#0a7a2a; }
+  .bad{ color:#b00020; }
+
+  /* Vocabulary cards */
+  .vocabLine{ margin-top: 6px; font-size: 14px; color:#444; line-height: 1.35; }
+  .pill{
+    display:inline-block;
+    padding: 4px 10px;
+    border:1px solid #eee;
+    border-radius: 999px;
+    font-size: 13px;
+    color:#333;
+    background:#fff;
+    margin-top: 8px;
+  }
+
+  /* Desktop layout enhancement */
+  @media (min-width: 900px){
+    .wrap{ padding: 18px; }
+    h1{ font-size: 28px; }
+    h2{ font-size: 22px; }
+    .sp{ font-size: 22px; }
+    .controls{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      align-items: end;
+    }
+    .controls .controlRow:nth-child(3){ grid-column: 1 / span 2; }
+    .controls .controlRow:nth-child(4){ grid-column: 3; }
+    .tools{
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn{ width:auto; }
+    .btn.secondary{ width:auto; }
+  }
 </style>
 </head>
 
 <body>
 <div class="wrap">
 
-<!-- HEADER -->
-<div class="card">
-  <h1>Spanish Class – The Future</h1>
-  <div class="sub">
-    Tap ▶ Speak to hear Spanish. Best voice is auto-selected if available.
+  <!-- Header / Controls -->
+  <div class="card">
+    <h1>Spanish Class — Future Tenses + Vocabulary</h1>
+    <div class="sub">
+      Tap <b>▶ Speak</b> to hear Spanish. If available, the page auto-selects <b>Google Español de Estados Unidos</b>.
+      Use <b>🎙 Repeat</b> to practice (works best in Chrome desktop).
+    </div>
+
+    <div class="controls">
+      <div class="controlRow">
+        <label for="voiceSelect">Voice</label>
+        <select id="voiceSelect"></select>
+        <div class="hint" id="voiceHint"></div>
+      </div>
+
+      <div class="controlRow">
+        <label for="rate">Speed</label>
+        <input id="rate" type="range" min="0.6" max="1.2" step="0.05" value="0.95">
+        <div class="hint" id="rateVal">0.95×</div>
+      </div>
+
+      <div class="controlRow">
+        <button class="btn secondary" id="stopBtn" type="button">■ Stop</button>
+      </div>
+
+      <div class="controlRow">
+        <div class="status" id="envStatus">Ready</div>
+      </div>
+    </div>
   </div>
 
-  <div class="controls">
-    <label>Voice</label>
-    <select id="voiceSelect"></select>
+  <!-- 1) Vocabulary -->
+  <div class="card">
+    <h2>1) Vocabulary & Clarifications</h2>
+    <div class="note">During the lesson, you clarified several cultural and linguistic terms:</div>
 
-    <label>Speed</label>
-    <input id="rate" type="range" min="0.6" max="1.2" step="0.05" value="0.95">
+    <!-- Each vocab card speaks the Spanish term + (optional) a short phrase -->
+    <div class="item" data-spanish="Roscón de Reyes.">
+      <div class="sp">Roscón de Reyes</div>
+      <div class="en"><b>English:</b> King's Cake</div>
+      <div class="vocabLine">A round sweet bread eaten for Epiphany.</div>
+      <div class="pill">Culture / Food</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+        <button class="btn secondary mic" type="button">🎙 Repeat</button>
+        <span class="status">Ready</span>
+      </div>
+    </div>
 
-    <button class="btn secondary" id="stopBtn">Stop</button>
-    <div class="note" id="voiceHint"></div>
+    <div class="item" data-spanish="Nata.">
+      <div class="sp">Nata</div>
+      <div class="en"><b>English:</b> Cream</div>
+      <div class="vocabLine">Usually refers to whipped cream filling in a cake.</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+        <button class="btn secondary mic" type="button">🎙 Repeat</button>
+        <span class="status">Ready</span>
+      </div>
+    </div>
+
+    <div class="item" data-spanish="Pantalla.">
+      <div class="sp">Pantalla</div>
+      <div class="en"><b>English:</b> Screen</div>
+      <div class="vocabLine">Refers to a computer or device screen.</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+        <button class="btn secondary mic" type="button">🎙 Repeat</button>
+        <span class="status">Ready</span>
+      </div>
+    </div>
+
+    <div class="item" data-spanish="Caber.">
+      <div class="sp">Caber</div>
+      <div class="en"><b>English:</b> To fit</div>
+      <div class="vocabLine">Used to describe capacity (e.g., “In my car five people fit”).</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+        <button class="btn secondary mic" type="button">🎙 Repeat</button>
+        <span class="status">Ready</span>
+      </div>
+    </div>
+
+    <div class="item" data-spanish="Valer.">
+      <div class="sp">Valer</div>
+      <div class="en"><b>English:</b> To cost / To be worth</div>
+      <div class="vocabLine">Used to express value or price of items or people.</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+        <button class="btn secondary mic" type="button">🎙 Repeat</button>
+        <span class="status">Ready</span>
+      </div>
+    </div>
+
+    <div class="item" data-spanish="Siguiente. Al día siguiente.">
+      <div class="sp">Siguiente</div>
+      <div class="en"><b>English:</b> Next / Following</div>
+      <div class="vocabLine"><b>Al día siguiente</b> means “the next day”.</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+        <button class="btn secondary mic" type="button">🎙 Repeat</button>
+        <span class="status">Ready</span>
+      </div>
+    </div>
+
+    <div class="item" data-spanish="Sendero.">
+      <div class="sp">Sendero</div>
+      <div class="en"><b>English:</b> Path / Trail</div>
+      <div class="vocabLine">A path through the forest (bosque).</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+        <button class="btn secondary mic" type="button">🎙 Repeat</button>
+        <span class="status">Ready</span>
+      </div>
+    </div>
+
+    <div class="item" data-spanish="Charlar.">
+      <div class="sp">Charlar</div>
+      <div class="en"><b>English:</b> To chat</div>
+      <div class="vocabLine">An informal way to say “to talk” about life.</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+        <button class="btn secondary mic" type="button">🎙 Repeat</button>
+        <span class="status">Ready</span>
+      </div>
+    </div>
+
+    <div class="item" data-spanish="Alojamiento.">
+      <div class="sp">Alojamiento</div>
+      <div class="en"><b>English:</b> Accommodation</div>
+      <div class="vocabLine">General term for a place to stay (hotel, etc.).</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+        <button class="btn secondary mic" type="button">🎙 Repeat</button>
+        <span class="status">Ready</span>
+      </div>
+    </div>
+
+    <div class="item" data-spanish="Sin duda.">
+      <div class="sp">Sin duda</div>
+      <div class="en"><b>English:</b> Without a doubt</div>
+      <div class="vocabLine">Used to say “certainly” or “obviously.”</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+        <button class="btn secondary mic" type="button">🎙 Repeat</button>
+        <span class="status">Ready</span>
+      </div>
+    </div>
+
+    <div class="item" data-spanish="Inolvidable.">
+      <div class="sp">Inolvidable</div>
+      <div class="en"><b>English:</b> Unforgettable</div>
+      <div class="vocabLine">Used to describe a special or wonderful day.</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+        <button class="btn secondary mic" type="button">🎙 Repeat</button>
+        <span class="status">Ready</span>
+      </div>
+    </div>
+
   </div>
-</div>
 
-<!-- VOCABULARY -->
-<div class="card">
-<h2>1) Vocabulary & Clarifications</h2>
+  <!-- 2) Periphrastic Future -->
+  <div class="card">
+    <h2>2) Periphrastic Future (Ir + a + Infinitive)</h2>
+    <div class="note">
+      Corresponds to “I am going to [verb]” and is used for near-future plans.<br>
+      <b>Formula:</b> conjugated <i>ir</i> + <i>a</i> + infinitive.
+    </div>
 
-<div class="vocab" data-spanish="Roscón de Reyes.">
-<b>Roscón de Reyes</b><br>
-King's Cake – A round sweet bread eaten for Epiphany.
-<div class="tools">
-<button class="btn speak">▶ Speak</button>
-</div>
-</div>
+    <div class="item" data-spanish="Yo voy a cantar.">
+      <div class="sp">Yo voy a cantar.</div>
+      <div class="en">I am going to sing.</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+        <button class="btn secondary mic" type="button">🎙 Repeat</button>
+        <span class="status">Ready</span>
+      </div>
+    </div>
 
-<div class="vocab" data-spanish="Nata.">
-<b>Nata</b><br>
-Cream – Usually whipped cream in cakes.
-<div class="tools"><button class="btn speak">▶ Speak</button></div>
-</div>
+    <div class="item" data-spanish="Vamos a ir a la iglesia.">
+      <div class="sp">Vamos a ir a la iglesia.</div>
+      <div class="en">We are going to go to church.</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+        <button class="btn secondary mic" type="button">🎙 Repeat</button>
+        <span class="status">Ready</span>
+      </div>
+    </div>
 
-<div class="vocab" data-spanish="Pantalla.">
-<b>Pantalla</b><br>
-Screen – Computer or device screen.
-<div class="tools"><button class="btn speak">▶ Speak</button></div>
-</div>
+    <div class="item" data-spanish="Vas a desayunar tostadas.">
+      <div class="sp">Vas a desayunar tostadas.</div>
+      <div class="en">You are going to have toast.</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+        <button class="btn secondary mic" type="button">🎙 Repeat</button>
+        <span class="status">Ready</span>
+      </div>
+    </div>
 
-<div class="vocab" data-spanish="Caber.">
-<b>Caber</b><br>
-To fit – Describes capacity.
-<div class="tools"><button class="btn speak">▶ Speak</button></div>
-</div>
+    <div class="item" data-spanish="Van a jugar al fútbol.">
+      <div class="sp">Van a jugar al fútbol.</div>
+      <div class="en">They are going to play soccer.</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+        <button class="btn secondary mic" type="button">🎙 Repeat</button>
+        <span class="status">Ready</span>
+      </div>
+    </div>
+  </div>
 
-<div class="vocab" data-spanish="Valer.">
-<b>Valer</b><br>
-To cost / be worth.
-<div class="tools"><button class="btn speak">▶ Speak</button></div>
-</div>
+  <!-- 3) Simple Future -->
+  <div class="card">
+    <h2>3) Simple Future (Futuro Simple)</h2>
+    <div class="note">
+      Corresponds to “I will [verb].” For regular verbs, add endings to the infinitive.
+    </div>
 
-<div class="vocab" data-spanish="Sin duda.">
-<b>Sin duda</b><br>
-Without a doubt.
-<div class="tools"><button class="btn speak">▶ Speak</button></div>
-</div>
+    <div class="item" data-spanish="Las terminaciones del futuro son: é, ás, á, emos, éis, án.">
+      <div class="sp">Regular endings (all -ar / -er / -ir)</div>
+      <div class="en"><b>Endings:</b> -é, -ás, -á, -emos, -éis, -án</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak (Spanish)</button>
+      </div>
+    </div>
 
-<div class="vocab" data-spanish="Inolvidable.">
-<b>Inolvidable</b><br>
-Unforgettable.
-<div class="tools"><button class="btn speak">▶ Speak</button></div>
-</div>
-</div>
+    <div class="note" style="margin-top:10px;">
+      <b>Irregular verbs (special future stems)</b> — same endings, different stem.
+      Tap ▶ Speak to hear the whole conjugation.
+    </div>
 
-<!-- PERIPHRASTIC FUTURE -->
-<div class="card">
-<h2>2) Periphrastic Future (ir + a)</h2>
+    <!-- Irregular verb cards -->
+    <div class="item" data-spanish="Tener. Tendré, tendrás, tendrá, tendremos, tendréis, tendrán.">
+      <div class="sp">Tener → Tendr-</div>
+      <div class="en"><b>Meaning:</b> to have</div>
+      <div class="en"><b>Future:</b> tendré, tendrás, tendrá, tendremos, tendréis, tendrán</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+      </div>
+    </div>
 
-<div class="item" data-spanish="Yo voy a cantar.">
-<div class="sp">Yo voy a cantar.</div>
-<div class="en">I am going to sing.</div>
-<div class="tools"><button class="btn speak">▶ Speak</button></div>
-</div>
+    <div class="item" data-spanish="Venir. Vendré, vendrás, vendrá, vendremos, vendréis, vendrán.">
+      <div class="sp">Venir → Vendr-</div>
+      <div class="en"><b>Meaning:</b> to come</div>
+      <div class="en"><b>Future:</b> vendré, vendrás, vendrá, vendremos, vendréis, vendrán</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+      </div>
+    </div>
 
-<div class="item" data-spanish="Vamos a ir a la iglesia.">
-<div class="sp">Vamos a ir a la iglesia.</div>
-<div class="en">We are going to go to church.</div>
-<div class="tools"><button class="btn speak">▶ Speak</button></div>
-</div>
-</div>
+    <div class="item" data-spanish="Poner. Pondré, pondrás, pondrá, pondremos, pondréis, pondrán.">
+      <div class="sp">Poner → Pondr-</div>
+      <div class="en"><b>Meaning:</b> to put</div>
+      <div class="en"><b>Future:</b> pondré, pondrás, pondrá, pondremos, pondréis, pondrán</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+      </div>
+    </div>
 
-<!-- SIMPLE FUTURE -->
-<div class="card">
-<h2>3) Simple Future (Futuro Simple)</h2>
-<div class="note">
-Same endings for all verbs: é, ás, á, emos, éis, án
-</div>
+    <div class="item" data-spanish="Poder. Podré, podrás, podrá, podremos, podréis, podrán.">
+      <div class="sp">Poder → Podr-</div>
+      <div class="en"><b>Meaning:</b> to be able to / can</div>
+      <div class="en"><b>Future:</b> podré, podrás, podrá, podremos, podréis, podrán</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+      </div>
+    </div>
 
-<div class="item" data-spanish="Tendré, tendrás, tendrá, tendremos, tendréis, tendrán.">
-<div class="sp">Tener → Tendr-</div>
-<div class="en">tendré, tendrás, tendrá, tendremos, tendréis, tendrán</div>
-<div class="tools"><button class="btn speak">▶ Speak</button></div>
-</div>
-</div>
+    <div class="item" data-spanish="Salir. Saldré, saldrás, saldrá, saldremos, saldréis, saldrán.">
+      <div class="sp">Salir → Saldr-</div>
+      <div class="en"><b>Meaning:</b> to leave / go out</div>
+      <div class="en"><b>Future:</b> saldré, saldrás, saldrá, saldremos, saldréis, saldrán</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+      </div>
+    </div>
 
-<!-- PRACTICE -->
-<div class="card">
-<h2>4) Practice Answers</h2>
+    <div class="item" data-spanish="Hacer. Haré, harás, hará, haremos, haréis, harán.">
+      <div class="sp">Hacer → Har-</div>
+      <div class="en"><b>Meaning:</b> to do / make</div>
+      <div class="en"><b>Future:</b> haré, harás, hará, haremos, haréis, harán</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+      </div>
+    </div>
 
-<div class="item" data-spanish="El próximo año, tendré más dinero.">
-<div class="sp">El próximo año, tendré más dinero.</div>
-<div class="en">Next year, I will have more money.</div>
-<div class="tools"><button class="btn speak">▶ Speak</button></div>
-</div>
+    <div class="item" data-spanish="Saber. Sabré, sabrás, sabrá, sabremos, sabréis, sabrán.">
+      <div class="sp">Saber → Sabr-</div>
+      <div class="en"><b>Meaning:</b> to know (a fact)</div>
+      <div class="en"><b>Future:</b> sabré, sabrás, sabrá, sabremos, sabréis, sabrán</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+      </div>
+    </div>
 
-<div class="item" data-spanish="Yo voy a aprender español.">
-<div class="sp">Yo voy a aprender español.</div>
-<div class="en">I am going to learn Spanish.</div>
-<div class="tools"><button class="btn speak">▶ Speak</button></div>
-</div>
-</div>
+    <div class="item" data-spanish="Querer. Querré, querrás, querrá, querremos, querréis, querrán.">
+      <div class="sp">Querer → Querr-</div>
+      <div class="en"><b>Meaning:</b> to want / to love</div>
+      <div class="en"><b>Future:</b> querré, querrás, querrá, querremos, querréis, querrán</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4) Practice answers -->
+  <div class="card">
+    <h2>4) Practice Exercise Answers</h2>
+    <div class="note">Spanish translations for the practice exercises provided previously:</div>
+
+    <div class="item" data-spanish="El próximo año, tendré más dinero.">
+      <div class="sp">El próximo año, tendré más dinero.</div>
+      <div class="en"><b>English:</b> Next year, I will have more money.</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+        <button class="btn secondary mic" type="button">🎙 Repeat</button>
+        <span class="status">Ready</span>
+      </div>
+    </div>
+
+    <div class="item" data-spanish="Este fin de semana, vamos a viajar.">
+      <div class="sp">Este fin de semana, vamos a viajar.</div>
+      <div class="en"><b>English:</b> This weekend, we are going to travel.</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+        <button class="btn secondary mic" type="button">🎙 Repeat</button>
+        <span class="status">Ready</span>
+      </div>
+    </div>
+
+    <div class="item" data-spanish="Ellos saldrán de casa a las ocho.">
+      <div class="sp">Ellos saldrán de casa a las ocho.</div>
+      <div class="en"><b>English:</b> They will leave the house at 8:00.</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+        <button class="btn secondary mic" type="button">🎙 Repeat</button>
+        <span class="status">Ready</span>
+      </div>
+    </div>
+
+    <div class="item" data-spanish="Yo voy a aprender español.">
+      <div class="sp">Yo voy a aprender español.</div>
+      <div class="en"><b>English:</b> I am going to learn Spanish.</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+        <button class="btn secondary mic" type="button">🎙 Repeat</button>
+        <span class="status">Ready</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Notes</h2>
+    <ul class="note">
+      <li>If the voice dropdown is empty, your embed environment is blocking Web Speech voices. Open the page directly (GitHub Pages) for best results.</li>
+      <li>Chrome desktop supports mic practice best.</li>
+    </ul>
+  </div>
 
 </div>
 
 <script>
-const preferred = ["google","español","estados unidos"];
-const voiceSelect = document.getElementById("voiceSelect");
-const rate = document.getElementById("rate");
-const stopBtn = document.getElementById("stopBtn");
-const voiceHint = document.getElementById("voiceHint");
+  // Preferred voice fragments:
+  // We will auto-select a voice whose name includes these words (in any case).
+  const PREFERRED_VOICE_PARTS = ["google", "español", "estados unidos"];
 
-function loadVoices(){
-  const voices = speechSynthesis.getVoices();
-  voiceSelect.innerHTML="";
-  voices.forEach(v=>{
-    const o=document.createElement("option");
-    o.value=v.name;
-    o.textContent=`${v.name} (${v.lang})`;
-    voiceSelect.appendChild(o);
-  });
-  const pick=voices.find(v=>preferred.every(p=>v.name.toLowerCase().includes(p)))
-    || voices.find(v=>v.lang.startsWith("es"))
-    || voices[0];
-  if(pick){
-    voiceSelect.value=pick.name;
-    voiceHint.textContent=`Voice: ${pick.name}`;
+  const voiceSelect = document.getElementById("voiceSelect");
+  const rate = document.getElementById("rate");
+  const rateVal = document.getElementById("rateVal");
+  const stopBtn = document.getElementById("stopBtn");
+  const voiceHint = document.getElementById("voiceHint");
+  const envStatus = document.getElementById("envStatus");
+
+  function normalizeForMatch(s) {
+    return (s || "")
+      .toLowerCase()
+      .trim()
+      .replace(/[¡!¿?.,;:()"]/g, "")
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // remove accents
+      .replace(/\s+/g, " ");
   }
-}
-speechSynthesis.onvoiceschanged=loadVoices;
-loadVoices();
 
-function speak(text){
-  speechSynthesis.cancel();
-  const u=new SpeechSynthesisUtterance(text);
-  u.rate=rate.value;
-  const v=[...speechSynthesis.getVoices()].find(x=>x.name===voiceSelect.value);
-  if(v){u.voice=v; u.lang=v.lang;}
-  speechSynthesis.speak(u);
-}
+  function voiceNameMatchesPreferred(name) {
+    const n = (name || "").toLowerCase();
+    return PREFERRED_VOICE_PARTS.every(p => n.includes(p));
+  }
 
-document.querySelectorAll(".speak").forEach(btn=>{
-  btn.onclick=()=>speak(btn.closest("[data-spanish]").dataset.spanish);
-});
-stopBtn.onclick=()=>speechSynthesis.cancel();
+  function loadVoicesAndAutoSelect() {
+    const voices = window.speechSynthesis?.getVoices?.() || [];
+    voiceSelect.innerHTML = "";
+
+    voices.forEach(v => {
+      const opt = document.createElement("option");
+      opt.value = v.name;
+      opt.textContent = `${v.name} (${v.lang})`;
+      voiceSelect.appendChild(opt);
+    });
+
+    const preferred = voices.find(v => voiceNameMatchesPreferred(v.name));
+    const esUS = voices.find(v => (v.lang || "").toLowerCase() === "es-us");
+    const spanish = voices.find(v => (v.lang || "").toLowerCase().startsWith("es"));
+    const chosen = preferred || esUS || spanish || voices[0] || null;
+
+    if (chosen) {
+      voiceSelect.value = chosen.name;
+      voiceHint.textContent = preferred ? `✓ Preferred voice selected: ${chosen.name}` : `Voice: ${chosen.name}`;
+      envStatus.textContent = "Ready";
+    } else {
+      voiceHint.textContent = "No voices found in this browser environment.";
+      envStatus.textContent = "No voices available";
+    }
+
+    // If embedded environments block voices, this often stays empty.
+    setTimeout(() => {
+      const v2 = window.speechSynthesis?.getVoices?.() || [];
+      if (!v2.length) {
+        envStatus.textContent = "No voices here (embed restriction). Open the page directly.";
+      }
+    }, 800);
+  }
+
+  function getSelectedVoice() {
+    const voices = window.speechSynthesis?.getVoices?.() || [];
+    return voices.find(v => v.name === voiceSelect.value) || null;
+  }
+
+  function speak(text) {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+
+    const u = new SpeechSynthesisUtterance(text);
+    u.rate = parseFloat(rate.value);
+
+    const chosen = getSelectedVoice();
+    if (chosen) {
+      u.voice = chosen;
+      u.lang = chosen.lang || "es-US";
+    } else {
+      u.lang = "es-US";
+    }
+    window.speechSynthesis.speak(u);
+  }
+
+  // Speed label
+  rate.addEventListener("input", () => {
+    rateVal.textContent = `${rate.value}×`;
+  });
+
+  stopBtn.addEventListener("click", () => window.speechSynthesis?.cancel?.());
+
+  if (window.speechSynthesis) {
+    loadVoicesAndAutoSelect();
+    window.speechSynthesis.onvoiceschanged = loadVoicesAndAutoSelect;
+  }
+
+  // Attach Speak buttons everywhere we have data-spanish
+  document.querySelectorAll("[data-spanish]").forEach(node => {
+    const speakBtn = node.querySelector(".speak");
+    if (speakBtn) speakBtn.addEventListener("click", () => speak(node.dataset.spanish));
+  });
+
+  // Speech Recognition (optional)
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognitionSupported = !!SpeechRecognition;
+
+  function setStatus(node, html, cls) {
+    const el = node.querySelector(".status");
+    if (!el) return;
+    el.className = "status " + (cls || "");
+    el.innerHTML = html;
+  }
+
+  function listenAndCheck(node) {
+    if (!recognitionSupported) {
+      setStatus(node, "Speech recognition not supported here.", "bad");
+      return;
+    }
+
+    const target = node.dataset.spanish || "";
+    const targetNorm = normalizeForMatch(target);
+
+    const rec = new SpeechRecognition();
+    rec.lang = "es-US";
+    rec.interimResults = false;
+    rec.maxAlternatives = 1;
+
+    setStatus(node, "Listening… speak now.", "");
+
+    rec.onresult = (e) => {
+      const heard = e.results[0][0].transcript || "";
+      const heardNorm = normalizeForMatch(heard);
+
+      const ok = (heardNorm === targetNorm) ||
+                 (heardNorm.includes(targetNorm)) ||
+                 (targetNorm.includes(heardNorm) && heardNorm.length > 6);
+
+      if (ok) {
+        setStatus(node, `Heard: “${heard}” <span class="good"><b>✓ Nice!</b></span>`, "");
+      } else {
+        setStatus(node, `Heard: “${heard}” <span class="bad"><b>✗ Try again</b></span><br><span class="hint">Expected: “${target}”</span>`, "");
+      }
+    };
+
+    rec.onerror = (e) => setStatus(node, `Mic error: ${e.error || "unknown"}`, "bad");
+    rec.start();
+  }
+
+  // Attach mic buttons
+  document.querySelectorAll("[data-spanish]").forEach(node => {
+    const micBtn = node.querySelector(".mic");
+    if (!micBtn) return;
+
+    if (!recognitionSupported) {
+      micBtn.disabled = true;
+      micBtn.textContent = "🎙 Repeat (not supported)";
+      micBtn.classList.add("secondary");
+    } else {
+      micBtn.addEventListener("click", () => listenAndCheck(node));
+    }
+  });
 </script>
 </body>
 </html>
