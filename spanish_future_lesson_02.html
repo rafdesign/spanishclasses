@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish Class — Emotions & Personality (Ser vs Estar)</title>
+
+<style>
+  :root{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  body{ margin:0; background:#fafafa; color:#111; }
+  .wrap{ max-width: 980px; margin: 0 auto; padding: 14px; }
+  .card{
+    background:#fff; border:1px solid #eaeaea; border-radius: 16px;
+    padding: 16px; margin: 14px 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  h1{ margin:0 0 8px; font-size: 24px; line-height: 1.2; }
+  h2{ margin:0 0 10px; font-size: 20px; line-height: 1.2; }
+  .sub{ color:#444; font-size: 15px; line-height: 1.35; }
+  .note{ color:#555; font-size: 14px; line-height: 1.45; margin-top: 6px; }
+  .hint{ font-size: 13px; color:#666; }
+
+  /* Controls */
+  .controls{ display:flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+  .controlRow{ display:grid; gap:8px; }
+  label{ font-size: 14px; font-weight: 700; color:#222; }
+  select, input[type="range"]{
+    width:100%;
+    font-size:16px;
+    padding: 10px;
+    border-radius: 12px;
+    border:1px solid #ddd;
+    background:#fff;
+  }
+
+  .btn{
+    width:100%;
+    font-size: 16px;
+    padding: 14px 14px;
+    border-radius: 14px;
+    border:1px solid #111;
+    background:#111;
+    color:#fff;
+    font-weight: 800;
+    cursor:pointer;
+  }
+  .btn.secondary{
+    border:1px solid #ddd;
+    background:#fff;
+    color:#111;
+    font-weight: 800;
+  }
+  .btn.ghost{
+    border:1px solid #ddd;
+    background:#fff;
+    color:#111;
+    font-weight: 800;
+  }
+
+  /* Lesson items */
+  .item{
+    border: 1px solid #eee;
+    background:#fcfcfc;
+    border-radius: 14px;
+    padding: 14px;
+    margin-top: 12px;
+  }
+  .sp{ font-size: 20px; font-weight: 800; line-height: 1.35; }
+  .en{ font-size: 15px; color:#444; line-height: 1.35; margin-top: 6px; }
+  .tools{ display:flex; flex-direction: column; gap:10px; margin-top: 12px; }
+
+  .grid{
+    display:grid;
+    gap:12px;
+    grid-template-columns: 1fr;
+    margin-top: 12px;
+  }
+
+  .tag{
+    display:inline-block;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border:1px solid #e9e9e9;
+    background:#fff;
+    color:#555;
+    margin-top: 8px;
+  }
+
+  .mono{
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 13px;
+    line-height: 1.45;
+    background:#fff;
+    border:1px dashed #e1e1e1;
+    border-radius: 12px;
+    padding: 12px;
+    white-space: pre-wrap;
+  }
+
+  @media (min-width: 860px){
+    .wrap{ padding: 18px; }
+    h1{ font-size: 28px; }
+    h2{ font-size: 22px; }
+    .sp{ font-size: 22px; }
+
+    .controls{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      align-items: end;
+    }
+    .tools{
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn{ width:auto; }
+    .btn.secondary{ width:auto; }
+    .btn.ghost{ width:auto; }
+
+    .grid{
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <!-- Header / Controls -->
+  <div class="card">
+    <h1>Spanish Vocabulary — Emotions & Personality (Ser vs. Estar)</h1>
+    <div class="sub">
+      Tap <b>▶ Speak</b> to hear Spanish. Auto-selects <b>Google Español de Estados Unidos</b> when available.
+    </div>
+
+    <div class="controls">
+      <div class="controlRow">
+        <label for="voiceSelect">Voice</label>
+        <select id="voiceSelect"></select>
+        <div class="hint" id="voiceHint"></div>
+      </div>
+
+      <div class="controlRow">
+        <label for="rate">Speed</label>
+        <input id="rate" type="range" min="0.6" max="1.2" step="0.05" value="0.95">
+        <div class="hint" id="rateVal">0.95×</div>
+      </div>
+
+      <div class="controlRow">
+        <button class="btn secondary" id="stopBtn" type="button">■ Stop</button>
+      </div>
+    </div>
+
+    <div class="note">
+      If the voice dropdown is empty in a website embed, open this page directly (GitHub Pages) instead.
+    </div>
+  </div>
+
+  <!-- 1) Emotions (ESTAR) -->
+  <div class="card">
+    <h2>1) Describing Emotions (Temporary states → ESTAR)</h2>
+    <div class="note">
+      Emotions are how you feel <b>right now</b>, so they use <b>ESTAR</b>.
+    </div>
+
+    <div class="item" data-spanish="Estoy cansado hoy.">
+      <div class="sp">Estoy cansado hoy.</div>
+      <div class="en">I’m tired today.</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:12px;"><b>Vocabulary (Adjective → Noun)</b></div>
+
+    <div class="grid">
+
+      <div class="item" data-spanish="Estoy triste. La tristeza.">
+        <div class="sp">Triste</div>
+        <div class="en"><b>English:</b> Sad</div>
+        <div class="en"><b>Noun:</b> La tristeza — Sadness</div>
+        <span class="tag">ESTAR (temporary)</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Estoy deprimido. La depresión.">
+        <div class="sp">Deprimido / Deprimida</div>
+        <div class="en"><b>English:</b> Depressed (temporary)</div>
+        <div class="en"><b>Noun:</b> La depresión — Depression (illness)</div>
+        <span class="tag">ESTAR (temporary)</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Estoy feliz. La felicidad.">
+        <div class="sp">Feliz</div>
+        <div class="en"><b>English:</b> Happy</div>
+        <div class="en"><b>Noun:</b> La felicidad — Happiness</div>
+        <span class="tag">ESTAR (temporary)</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Estoy enamorado. El enamoramiento.">
+        <div class="sp">Enamorado / Enamorada</div>
+        <div class="en"><b>English:</b> In love</div>
+        <div class="en"><b>Noun:</b> El enamoramiento — Falling in love</div>
+        <span class="tag">ESTAR (temporary)</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Estoy furioso. La furia.">
+        <div class="sp">Furioso / Furiosa</div>
+        <div class="en"><b>English:</b> Furious</div>
+        <div class="en"><b>Noun:</b> La furia — Fury</div>
+        <span class="tag">ESTAR (temporary)</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Estoy enfadado. El enfado.">
+        <div class="sp">Enfadado / Enfadada</div>
+        <div class="en"><b>English:</b> Angry</div>
+        <div class="en"><b>Noun:</b> El enfado — Anger</div>
+        <span class="tag">ESTAR (temporary)</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Estoy cabreado. El cabreo.">
+        <div class="sp">Cabreado / Cabreada</div>
+        <div class="en"><b>English:</b> Pissed off (informal, Spain)</div>
+        <div class="en"><b>Noun:</b> El cabreo — Anger (informal)</div>
+        <span class="tag">ESTAR (temporary)</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Estoy aburrido. El aburrimiento.">
+        <div class="sp">Aburrido / Aburrida</div>
+        <div class="en"><b>English:</b> Bored</div>
+        <div class="en"><b>Noun:</b> El aburrimiento — Boredom</div>
+        <span class="tag">ESTAR (temporary)</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Estoy apático. La apatía.">
+        <div class="sp">Apático / Apática</div>
+        <div class="en"><b>English:</b> Apathetic</div>
+        <div class="en"><b>Noun:</b> La apatía — Apathy</div>
+        <span class="tag">ESTAR (temporary)</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Estoy sorprendido. La sorpresa.">
+        <div class="sp">Sorprendido / Sorprendida</div>
+        <div class="en"><b>English:</b> Surprised</div>
+        <div class="en"><b>Noun:</b> La sorpresa — Surprise</div>
+        <span class="tag">ESTAR (temporary)</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Estoy cansado. El cansancio.">
+        <div class="sp">Cansado / Cansada</div>
+        <div class="en"><b>English:</b> Tired</div>
+        <div class="en"><b>Noun:</b> El cansancio — Tiredness</div>
+        <span class="tag">ESTAR (temporary)</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Estoy relajado. La relajación.">
+        <div class="sp">Relajado / Relajada</div>
+        <div class="en"><b>English:</b> Relaxed</div>
+        <div class="en"><b>Noun:</b> La relajación — Relaxation</div>
+        <span class="tag">ESTAR (temporary)</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Estoy tranquilo. La tranquilidad.">
+        <div class="sp">Tranquilo / Tranquila</div>
+        <div class="en"><b>English:</b> Calm</div>
+        <div class="en"><b>Noun:</b> La tranquilidad — Calmness</div>
+        <span class="tag">ESTAR (temporary)</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Estoy confuso. La confusión.">
+        <div class="sp">Confuso / Confusa</div>
+        <div class="en"><b>English:</b> Confused</div>
+        <div class="en"><b>Noun:</b> La confusión — Confusion</div>
+        <span class="tag">ESTAR (temporary)</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Tengo hambre. El hambre.">
+        <div class="sp">Hambriento / Hambrienta</div>
+        <div class="en"><b>English:</b> Hungry</div>
+        <div class="en"><b>Noun:</b> El hambre — Hunger</div>
+        <span class="tag">ESTAR / expression</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Estoy enfermo. La enfermedad.">
+        <div class="sp">Enfermo / Enferma</div>
+        <div class="en"><b>English:</b> Sick</div>
+        <div class="en"><b>Noun:</b> La enfermedad — Illness</div>
+        <span class="tag">ESTAR (temporary)</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 2) Personality (SER) -->
+  <div class="card">
+    <h2>2) Describing Personality (Permanent traits → SER)</h2>
+    <div class="note">
+      Personality describes how someone is in general, so we use <b>SER</b>.
+    </div>
+
+    <div class="item" data-spanish="Es una persona muy trabajadora.">
+      <div class="sp">Es una persona muy trabajadora.</div>
+      <div class="en">He/She is very hard-working.</div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak</button>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:12px;"><b>Adjectives (with opposites)</b></div>
+
+    <div class="grid">
+
+      <div class="item" data-spanish="Tacaño. Generoso.">
+        <div class="sp">Tacaño / Tacaña</div>
+        <div class="en"><b>English:</b> Stingy</div>
+        <div class="en"><b>Opposite:</b> Generoso / Generosa</div>
+        <span class="tag">SER</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Independiente. Dependiente.">
+        <div class="sp">Independiente</div>
+        <div class="en"><b>English:</b> Independent</div>
+        <div class="en"><b>Opposite:</b> Dependiente</div>
+        <span class="tag">SER</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Autónomo. Dependiente.">
+        <div class="sp">Autónomo / Autónoma</div>
+        <div class="en"><b>English:</b> Self-employed / Autonomous</div>
+        <div class="en"><b>Opposite:</b> Dependiente</div>
+        <span class="tag">SER</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Callado. Hablador.">
+        <div class="sp">Callado / Callada</div>
+        <div class="en"><b>English:</b> Quiet</div>
+        <div class="en"><b>Opposite:</b> Hablador / Habladora</div>
+        <span class="tag">SER</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Tímido. Desenvuelto.">
+        <div class="sp">Tímido / Tímida</div>
+        <div class="en"><b>English:</b> Shy</div>
+        <div class="en"><b>Opposite:</b> Desenvuelto / Desenvuelta</div>
+        <span class="tag">SER</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Vago. Trabajador.">
+        <div class="sp">Vago / Vaga</div>
+        <div class="en"><b>English:</b> Lazy</div>
+        <div class="en"><b>Opposite:</b> Trabajador / Trabajadora</div>
+        <span class="tag">SER</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Mentiroso. Sincero.">
+        <div class="sp">Mentiroso / Mentirosa</div>
+        <div class="en"><b>English:</b> Liar</div>
+        <div class="en"><b>Opposite:</b> Sincero / Sincera</div>
+        <span class="tag">SER</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Egoísta. Altruista.">
+        <div class="sp">Egoísta</div>
+        <div class="en"><b>English:</b> Selfish</div>
+        <div class="en"><b>Opposite:</b> Altruista</div>
+        <span class="tag">SER</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Egocéntrico. Considerado.">
+        <div class="sp">Egocéntrico / Egocéntrica</div>
+        <div class="en"><b>English:</b> Egocentric</div>
+        <div class="en"><b>Opposite:</b> Considerado / Considerada</div>
+        <span class="tag">SER</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Narcisista.">
+        <div class="sp">Narcisista</div>
+        <div class="en"><b>English:</b> Narcissistic</div>
+        <span class="tag">SER</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Sensible. Frío.">
+        <div class="sp">Sensible</div>
+        <div class="en"><b>English:</b> Sensitive</div>
+        <div class="en"><b>Opposite:</b> Frío / Fría</div>
+        <span class="tag">SER</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Orgulloso.">
+        <div class="sp">Orgulloso / Orgullosa</div>
+        <div class="en"><b>English:</b> Proud</div>
+        <span class="tag">SER</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Serio. Bromista.">
+        <div class="sp">Serio / Seria</div>
+        <div class="en"><b>English:</b> Serious</div>
+        <div class="en"><b>Opposite:</b> Bromista</div>
+        <span class="tag">SER</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Simpático. Antipático.">
+        <div class="sp">Simpático / Simpática</div>
+        <div class="en"><b>English:</b> Nice / Likeable</div>
+        <div class="en"><b>Opposite:</b> Antipático / Antipática</div>
+        <span class="tag">SER</span>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3) Useful phrases -->
+  <div class="card">
+    <h2>3) Useful Phrases & Expressions</h2>
+
+    <div class="grid">
+
+      <div class="item" data-spanish="¿Cómo estás? ¿Cómo te sientes?">
+        <div class="sp">¿Cómo estás? / ¿Cómo te sientes?</div>
+        <div class="en">How are you? / How do you feel?</div>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="¿Cómo eres?">
+        <div class="sp">¿Cómo eres?</div>
+        <div class="en">What are you like?</div>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Terminar. Acabar.">
+        <div class="sp">Terminar / Acabar</div>
+        <div class="en">To finish / to end</div>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Tener fama de.">
+        <div class="sp">Tener fama de…</div>
+        <div class="en">To have a reputation for…</div>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Gastar bromas.">
+        <div class="sp">Gastar bromas</div>
+        <div class="en">To joke / pull pranks</div>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="Invitar.">
+        <div class="sp">Invitar</div>
+        <div class="en">To invite</div>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+      <div class="item" data-spanish="No me acuerdo.">
+        <div class="sp">No me acuerdo</div>
+        <div class="en">I don’t remember</div>
+        <div class="tools"><button class="btn speak" type="button">▶ Speak</button></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 4) Practice example -->
+  <div class="card">
+    <h2>🧩 Practice Example (Spanish + English)</h2>
+    <div class="note"><b>El Señor Ricardo — Description</b></div>
+
+    <div class="item" data-spanish="El señor Ricardo es conocido por ser una persona muy trabajadora y sincera. Siempre dice la verdad, lo que a veces lo hace parecer serio o incluso un poco frío. Esta semana se siente cansado porque ha estado muy ocupado, pero también está orgulloso de su trabajo. A pesar de su seriedad, es muy generoso y nunca es tacaño con sus amigos. No es hablador ni narcisista; prefiere escuchar. Por lo general, es tranquilo, pero cuando lo presionan demasiado, puede estar enfadado o incluso furioso.">
+      <div class="sp">🇪🇸 Spanish</div>
+      <div class="mono">
+El señor Ricardo es conocido por ser una persona muy trabajadora y sincera. Siempre
+dice la verdad, lo que a veces lo hace parecer serio o incluso un poco frío.
+
+Emociones: Esta semana se siente cansado porque ha estado muy ocupado, pero
+también está orgulloso de su trabajo.
+
+Contraste: A pesar de su seriedad, es muy generoso y nunca es tacaño con sus amigos.
+
+Carácter: No es hablador ni narcisista; prefiere escuchar. Por lo general, es tranquilo,
+pero cuando lo presionan demasiado, puede estar enfadado o incluso furioso.
+      </div>
+      <div class="tools">
+        <button class="btn speak" type="button">▶ Speak (Spanish)</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="sp">🇺🇸 English</div>
+      <div class="mono">
+Mr. Ricardo is known for being a very hard-working and sincere person. He always tells
+the truth, which sometimes makes him seem serious or even a bit cold/distant.
+
+Emotions: This week, he feels tired because he has been very busy, but he also feels
+proud of his work.
+
+Contrast: Despite his seriousness, he is very generous and is never stingy with his
+friends.
+
+Character: He is not talkative or narcissistic; he prefers to listen. In general, he is calm,
+but when people pressure him too much, he can get angry or even furious.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Auto-select voice preference: "Google Español de Estados Unidos" (if available)
+  const PREFERRED_VOICE_PARTS = ["google", "español", "estados unidos"];
+
+  const voiceSelect = document.getElementById("voiceSelect");
+  const rate = document.getElementById("rate");
+  const rateVal = document.getElementById("rateVal");
+  const stopBtn = document.getElementById("stopBtn");
+  const voiceHint = document.getElementById("voiceHint");
+
+  function voiceNameMatchesPreferred(name) {
+    const n = (name || "").toLowerCase();
+    return PREFERRED_VOICE_PARTS.every(p => n.includes(p));
+  }
+
+  function loadVoicesAndAutoSelect() {
+    const voices = window.speechSynthesis?.getVoices?.() || [];
+    voiceSelect.innerHTML = "";
+
+    voices.forEach(v => {
+      const opt = document.createElement("option");
+      opt.value = v.name;
+      opt.textContent = `${v.name} (${v.lang})`;
+      voiceSelect.appendChild(opt);
+    });
+
+    const preferred = voices.find(v => voiceNameMatchesPreferred(v.name));
+    const esUS = voices.find(v => (v.lang || "").toLowerCase() === "es-us");
+    const spanish = voices.find(v => (v.lang || "").toLowerCase().startsWith("es"));
+    const chosen = preferred || esUS || spanish || voices[0] || null;
+
+    if (chosen) {
+      voiceSelect.value = chosen.name;
+      voiceHint.textContent = preferred
+        ? `Selected: ${chosen.name} (preferred)`
+        : `Selected: ${chosen.name}`;
+    } else {
+      voiceHint.textContent = "No voices found in this browser environment.";
+    }
+  }
+
+  function getSelectedVoice() {
+    const voices = window.speechSynthesis?.getVoices?.() || [];
+    return voices.find(v => v.name === voiceSelect.value) || null;
+  }
+
+  function speak(text) {
+    if (!window.speechSynthesis) return;
+
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.rate = parseFloat(rate.value);
+
+    const chosen = getSelectedVoice();
+    if (chosen) {
+      u.voice = chosen;
+      u.lang = chosen.lang || "es-US";
+    } else {
+      u.lang = "es-US";
+    }
+
+    window.speechSynthesis.speak(u);
+  }
+
+  rate.addEventListener("input", () => {
+    rateVal.textContent = `${rate.value}×`;
+  });
+
+  stopBtn.addEventListener("click", () => window.speechSynthesis?.cancel?.());
+
+  if (window.speechSynthesis) {
+    loadVoicesAndAutoSelect();
+    window.speechSynthesis.onvoiceschanged = loadVoicesAndAutoSelect;
+  }
+
+  // Hook up Speak buttons
+  document.querySelectorAll("[data-spanish]").forEach(node => {
+    const btn = node.querySelector(".speak");
+    if (btn) btn.addEventListener("click", () => speak(node.dataset.spanish));
+  });
+</script>
+</body>
+</html>
